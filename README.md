@@ -104,7 +104,7 @@ git clone https://github.com/sdschroeder/reventure-content-os.git
 ```
 
 Add the cloned repo as a local plugin marketplace source in Claude Code,
-then install the `reventure-content-os` plugin from it. This is the one
+then install the `rl-content-os` plugin from it. This is the one
 path that installs skills *and* commands together, and `git pull` picks up
 future updates automatically.
 
