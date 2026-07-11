@@ -1,7 +1,7 @@
 # Author Context
 
 Read by `rl-repo-topic-scout` before ranking any topic shortlist, and by
-`rl-long-form-pipeline`'s define step (1) before starting a piece — who you
+`rl-content-pipeline`'s define step (1) before starting a piece — who you
 write for, why, and what "worth publishing" actually means to you. This file
 exists so an unattended or scheduled run has something durable to read,
 instead of asking a question nobody's there to answer.

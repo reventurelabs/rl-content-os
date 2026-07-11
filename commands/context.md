@@ -16,7 +16,7 @@ Run the `rl-context-discovery` skill now.
    - What's worth publishing: ask for cases ("what did you regret skipping"), not a stated principle.
 3. **Draft `AUTHOR-CONTEXT.md`'s three sections** — every claim traceable to evidence or something actually said, not smoothed into something more generic.
 4. **Validate.** Rank 2-3 candidate topics against the draft, ask if the order feels right, fold in corrections.
-5. **Hand off.** `rl-repo-topic-scout` and `rl-long-form-pipeline` already read this file — nothing further to wire up.
+5. **Hand off.** `rl-repo-topic-scout` and `rl-content-pipeline` already read this file — nothing further to wire up.
 
 ## Notes
 

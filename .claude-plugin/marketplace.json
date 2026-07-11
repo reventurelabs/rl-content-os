@@ -7,9 +7,9 @@
     {
       "name": "reventure-content-os",
       "source": "./",
-      "description": "Reventure Labs Content OS: the structured /longform writing pipeline, the /scout repo-topic-scanning command, the /voice and /context discovery builders, and the supporting rl-writing-craft skill. Bring your own closing-polish skill — none is bundled.",
+      "description": "Reventure Labs Content OS: the structured /pipeline writing process, the /scout repo-topic-scanning command, the /voice and /context discovery builders, and the supporting rl-writing-craft skill. Bring your own closing-polish skill — none is bundled.",
       "skills": [
-        "./skills/rl-long-form-pipeline",
+        "./skills/rl-content-pipeline",
         "./skills/rl-repo-topic-scout",
         "./skills/rl-writing-craft",
         "./skills/rl-voice-discovery",

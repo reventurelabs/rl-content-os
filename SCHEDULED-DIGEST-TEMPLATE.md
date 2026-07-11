@@ -8,7 +8,7 @@ placeholders, paste the whole thing to Claude, and ask it to create a
 scheduled task from it.
 
 This is for **developers with repos** (see "Who needs what" in the main
-README). If that's not you, skip this entirely — run `/longform` directly
+README). If that's not you, skip this entirely — run `/pipeline` directly
 on your own topic ideas instead.
 
 ## What to ask Claude
@@ -34,7 +34,7 @@ on your own topic ideas instead.
 >    needs a human present, and there isn't one in this run. If every
 >    candidate is client-tagged, sends just the shortlist with a note
 >    explaining why nothing was drafted, and stops.
-> 5. Drafts the selected topic autonomously — `rl-long-form-pipeline`
+> 5. Drafts the selected topic autonomously — `rl-content-pipeline`
 >    steps 1 through 9, adapted for no live interview: draft from
 >    gathered evidence only, keep an explicit "things I couldn't
 >    determine" list rather than inventing, include the brief and outline

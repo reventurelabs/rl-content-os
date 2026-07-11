@@ -5,11 +5,11 @@ description: >-
   what to avoid — from either real writing samples (preferred) or a
   structured interview when no samples exist, then validates it against a
   test passage before finalizing. Produces `VOICE-PROFILE.md` at the repo
-  root, which `rl-long-form-pipeline` and `rl-writing-craft` already
+  root, which `rl-content-pipeline` and `rl-writing-craft` already
   reference generically as "your author-voice skill." Use when someone has
   no author-voice skill set up yet, asks "help me find my voice," "build a
   voice profile," "what does my writing actually sound like," or when
-  `rl-long-form-pipeline` notes no author-voice skill is configured. This is
+  `rl-content-pipeline` notes no author-voice skill is configured. This is
   a one-time (or occasional refresh) discovery process, not something invoked
   per-draft — once `VOICE-PROFILE.md` exists, the other skills read it
   directly. Does not replace a fuller, continuously-evolving voice skill
@@ -142,7 +142,7 @@ second test passage before finalizing.
 
 ## Step 5: Hand off
 
-Once `VOICE-PROFILE.md` is written and validated, it's live — `rl-long-form-pipeline`
+Once `VOICE-PROFILE.md` is written and validated, it's live — `rl-content-pipeline`
 and `rl-writing-craft` already check for "your author-voice skill" and will
 find this file. Tell the person this is a starting point, not a finished
 system: a voice skill that evolves through their ongoing corrections over

@@ -1,9 +1,9 @@
 ---
-description: Run the structured long-form writing pipeline — define → interview → brief → outline → draft → critique → revise → polish → refine → approve
+description: Run the structured content pipeline — define → interview → brief → outline → draft → critique → revise → polish → refine → approve
 argument-hint: <venture>, <format>, <topic>  e.g. "Reventure Labs blog post, why AI rollouts stall on sequencing not technology"
 ---
 
-The user is producing a long-form piece. Run the `rl-long-form-pipeline` skill's full 10-step sequence now, in order. Do not skip a step, and do not collapse it into an ad-hoc draft.
+The user is producing a long-form or high-stakes piece. Run the `rl-content-pipeline` skill's full 10-step sequence now, in order. Do not skip a step, and do not collapse it into an ad-hoc draft.
 
 **Request:** $ARGUMENTS
 
@@ -24,4 +24,4 @@ The user is producing a long-form piece. Run the `rl-long-form-pipeline` skill's
 
 - If venture, format, or topic is missing, infer from context — ask only if genuinely ambiguous.
 - For quick-turn formats (a LinkedIn post, a single email, social copy) this pipeline is overhead — use `/write` instead.
-- This command is the source-of-truth ordering; the `rl-long-form-pipeline` skill body documents the same sequence for ad-hoc (non-`/longform`) requests.
+- This command is the source-of-truth ordering; the `rl-content-pipeline` skill body documents the same sequence for ad-hoc (non-`/pipeline`) requests.

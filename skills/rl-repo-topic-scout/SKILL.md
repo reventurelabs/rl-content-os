@@ -7,7 +7,7 @@ description: >-
   rarely write about them. Grounds every candidate topic in something
   verifiable (a commit range, a diff, a decision visible in commit messages)
   rather than inventing a narrative. Hands the chosen topic and its evidence
-  directly into rl-long-form-pipeline's define/interview steps, so the writer
+  directly into rl-content-pipeline's define/interview steps, so the writer
   isn't starting from a blank page. Trigger on "what should I write about,"
   "scout topics from this repo," "review my recent work for blog ideas," or
   "/scout." Designed to also run unattended on a schedule (given a repo path
@@ -22,7 +22,7 @@ into "here's a topic with an angle" is its own piece of work, and it's the
 part that gets skipped. This skill does that part.
 
 It does not draft anything. Its output is a shortlist of grounded topic
-candidates, each with enough evidence attached that `rl-long-form-pipeline`'s
+candidates, each with enough evidence attached that `rl-content-pipeline`'s
 define and interview steps (1-2) can start from material instead of a blank
 page.
 
@@ -53,7 +53,7 @@ the call — don't make it for them by silently including or blanket skipping.
   abstracted; some shouldn't be written about at all. The skill doesn't
   guess which — it flags the source and leaves the call to whoever picks the
   topic. What it must not do is let a client-sourced topic slide into
-  `rl-long-form-pipeline`'s define step (1) with the confidential-source tag
+  `rl-content-pipeline`'s define step (1) with the confidential-source tag
   quietly dropped along the way.
 - **When unattended (a scheduled run), this matters more, not less** — there's
   no human in the loop that run to catch a dropped tag before it goes into a
@@ -160,9 +160,9 @@ by evidence strength or recency alone — those break ties, they don't set the
 order. Present these as options to pick from, not an open "what do you want
 to write about" question — the whole point is to remove that blank-page step.
 
-## Handoff into rl-long-form-pipeline
+## Handoff into rl-content-pipeline
 
-Once a topic is picked, feed it directly into `rl-long-form-pipeline`:
+Once a topic is picked, feed it directly into `rl-content-pipeline`:
 
 - **Step 1 (define)** gets pre-filled from the shortlist entry: topic, angle,
   rough goal inferred from why-now.

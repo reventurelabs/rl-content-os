@@ -1,5 +1,5 @@
 ---
-name: rl-long-form-pipeline
+name: rl-content-pipeline
 description: >-
   Structured 10-step writing process, triggered by either of two independent
   conditions — long-form content (blog posts, whitepapers, essays, case
@@ -23,7 +23,7 @@ description: >-
   overhead they don't need.
 ---
 
-# Long-Form Pipeline — Structured 10-Step Writing Process
+# Content Pipeline — Structured 10-Step Writing Process
 
 A tenth-lane orchestrator, not a sixth generator. This skill owns **sequencing**
 for long-form or high-stakes pieces; it borrows every actual writing rule from
@@ -239,4 +239,4 @@ confirmation here; this skill only produces the approved draft.
 - If a step's output already exists (you hand over a topic *and* a brief,
   say), don't redo the work — confirm it's still current and move to the next
   step.
-- A deterministic entry point for this sequence is the `/longform` command.
+- A deterministic entry point for this sequence is the `/pipeline` command.

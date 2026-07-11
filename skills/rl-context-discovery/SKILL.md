@@ -11,7 +11,7 @@ description: >-
   before finalizing. Use when `AUTHOR-CONTEXT.md` is still the unfilled
   template, someone asks "help me figure out who I'm writing for," "why do I
   even write," "what should I actually be writing about," or when
-  `rl-repo-topic-scout`/`rl-long-form-pipeline` note the context isn't set
+  `rl-repo-topic-scout`/`rl-content-pipeline` note the context isn't set
   up yet. This is the guided version of the "ask once, persist the answer"
   fallback those two skills already have — a one-time (or occasional
   refresh) discovery process, not a per-draft tool.
@@ -19,7 +19,7 @@ description: >-
 
 # Context Discovery
 
-`rl-repo-topic-scout` and `rl-long-form-pipeline` already have a thin
+`rl-repo-topic-scout` and `rl-content-pipeline` already have a thin
 fallback: if `AUTHOR-CONTEXT.md` is blank, ask once and persist the answer.
 That fallback is fine for someone who already knows exactly who they write
 for and why. It's thin for everyone else, because "why do you write" is a
@@ -119,7 +119,7 @@ the gap was significant.
 ## Step 5: Hand off
 
 Once `AUTHOR-CONTEXT.md` is written and validated, it's live —
-`rl-repo-topic-scout` and `rl-long-form-pipeline` already read it, nothing
+`rl-repo-topic-scout` and `rl-content-pipeline` already read it, nothing
 further to wire up. Mention that this is a snapshot, not a permanent
 answer: ventures change, motivations shift, and nothing forces a refresh —
 if the ranked shortlist starts feeling consistently off, that's the signal
