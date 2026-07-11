@@ -1,5 +1,6 @@
 {
   "name": "reventure-content-os",
+  "description": "Reventure Labs Content OS — structured long-form/high-stakes writing, repo-driven topic scouting, and guided voice/context discovery for Claude Code.",
   "owner": {
     "name": "Sean Schroeder"
   },
