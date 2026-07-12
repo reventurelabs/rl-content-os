@@ -280,9 +280,10 @@ it's a slot that could hold anything.
 Replace with ONLY: (a) the actual specific fact being gestured at — what, concretely, holds up,
 and how would a reader check it — or (b) cut the sentence outright. Sounding confident is not
 the same as being earned. Related, narrower mechanisms elsewhere in this file: Hollow compound
-phrases (Vocabulary) catches the noun-phrase version of this same move; the brand-brief test
-(Audience Calibration) catches it from the angle of who would actually say the sentence out
-loud. This rule is the general case both of those are instances of.
+phrases (Vocabulary) catches the noun-phrase version of this same move; Verdict adjectives
+(Vocabulary) catches the single-word version; the brand-brief test (Audience Calibration)
+catches it from the angle of who would actually say the sentence out loud. This rule is the
+general case all three are instances of.
 
 **Unmeasured quantitative flourish — STRONG FLAG.** Attaching measurement language to something never
 measured. "Building the wrong habit, faster." "It taught him twice as much." "Faster," "more,"
@@ -373,7 +374,39 @@ strategy but say nothing: "durable competitive advantage," "sustainable growth t
 "meaningful organizational impact," "robust solution," "holistic approach." Each one is a slot
 where a specific claim should be. Either name the actual advantage/growth/impact, or cut the
 phrase. This is the noun-phrase form of Unearned capability claim (Grounding Rules) — same
-failure, smaller unit.
+failure, smaller unit. Verdict adjectives (below) are the same failure smaller still — a
+single word instead of a phrase.
+
+**Verdict adjectives — replace with the evidence that would earn them.** The single-word form
+of Unearned capability claim (Grounding Rules) and Hollow compound phrases (above) — same
+failure, smallest unit. Words like "generic," "hedged," "flat," "robust," "innovative,"
+"disruptive," "boring," "vague" don't describe an observable property. They compress a judgment the reader has no way to check —
+each one silently says "trust my verdict" instead of showing what specifically earned it.
+This isn't about how many appear together. "The writing was generic" is exactly as unearned
+as "generic, hedged, flat" — a list doesn't cause the problem, it just makes an existing one
+easier to spot. Test any candidate: could a reader independently verify this from the text
+itself, or do they just have to take the writer's word for it? "Flat" fails; "every sentence
+lands within two words of the same length" passes. "Generic" fails; "swap the company name
+and the sentence still reads true" passes — because that's the actual fact "generic" was
+standing in for.
+
+The fix is never a better adjective. It's the specific, checkable fact that would let a
+reader reach the same verdict themselves — but only if that fact already exists somewhere
+real: in the source material, the interview, something already established earlier in the
+piece. When the piece describes a real system with source material behind it (code, a
+spec, documentation, prior written work), check that source directly before concluding no
+fact exists — the concrete mechanism a verdict adjective is standing in for is usually
+sitting in the actual source, not missing entirely; the fastest way to accidentally
+fabricate a "concrete example" is skipping that check and reaching for something merely
+plausible instead. Never invent one to satisfy this rule. A fabricated "concrete example" manufactured
+to sound specific is a Manufactured experience violation (Grounding Rules) wearing this
+rule's fix as a disguise — worse than the adjective it replaced, because it now reads as
+earned when it isn't. Same handling as Manufactured experience: if a real fact is available,
+use it; if it isn't, don't paper over the gap — cut the adjective and flag it as a question
+for the writer ("this needs a real example — do you have one?") rather than resolving it
+yourself. And whatever replaces the adjective, real or flagged, gets checked again before
+it's final — this is exactly the case "Replacement text inherits the check it replaced"
+(Running the Full Sequence) exists for.
 
 **Generic business language — translate to specific human language:**
 - "billable capacity" → "hours you can actually charge for"
@@ -444,9 +477,10 @@ let that first concrete detail carry its own frame.
 ### Editorial Output
 
 When running `edit`, return the edited text with changes applied, a list of what changed and
-why (grouped by type), and any grounding-rule flags that need the writer's ruling (a missing
-personal anchor, an unverifiable claim, a real-person attribution). Never fabricate to fill a
-flagged gap — surface it.
+why (grouped by type), and any flags that need the writer's ruling — grounding-rule violations
+(a missing personal anchor, an unverifiable claim, a real-person attribution) and verdict
+adjectives with no real fact behind them alike. Never fabricate to fill a flagged gap — surface
+it.
 
 ---
 
@@ -478,6 +512,7 @@ Consistency check (see above) on this pass too.
 - "actually" and filler intensifiers
 - Matched-cadence repetition; uniform sentence rhythm (3+ consecutive similar sentences)
 - AI vocabulary (delve, utilize, leverage, robust, seamless, etc.)
+- Hollow compound phrases; verdict adjectives
 - Announcing the metaphor
 - Generic conclusions; summary closes
 - Synonym cycling
