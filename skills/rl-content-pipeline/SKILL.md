@@ -108,9 +108,9 @@ leadership, internal alignment), which venture or publication this is for, and
 a rough length target. Infer whatever's already given in the request; ask only
 what's genuinely missing — one consolidated question, not a checklist.
 
-If the topic came from `rl-repo-topic-scout`, it already carries this from the
+If the topic came from `rl-topic-scout`, it already carries this from the
 shortlist. Otherwise, check `AUTHOR-CONTEXT.md` at the repo root for who this
-piece is for and why it's worth writing at all — same file `rl-repo-topic-scout`
+piece is for and why it's worth writing at all — same file `rl-topic-scout`
 reads, kept consistent so "who I write for" doesn't drift between the two
 skills. If it's still the unfilled template, `rl-context-discovery` builds it
 properly (evidence first, then a guided interview) rather than a one-off

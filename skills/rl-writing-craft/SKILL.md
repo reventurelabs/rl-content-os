@@ -152,6 +152,16 @@ no new information — and sags in the middle-to-end. This usually happens becau
 version predates the concrete one in the draft and both got left in. When a strong concrete
 beat is present, cut the abstract versions it replaces. They don't stack.
 
+**The heading-collision check.** Read the full heading list together, on its own, separate
+from reading the body. Two headings naming the same thing in different words — "The Content
+Pipeline" and "Content Pipeline," an overview section and a deep-dive section that both end
+up titled the same idea — reads as redundant to a skimmer or a table of contents even when
+the content underneath doesn't literally repeat itself. This collision is often invisible
+from inside the edit that caused it: renaming one heading only looks at that heading, not at
+the document's heading list as a whole. Run this check after any heading is added, renamed,
+or reordered — not only during a full structural pass — because that's exactly when a
+collision gets introduced without anyone looking at the full list at the same time.
+
 ### The Close
 
 The last line does something the second-to-last line cannot. It is not a summary, not a
@@ -688,6 +698,14 @@ different one (a vague sentence replaced with a fabricated fact, a cliché repla
 unmeasured quantitative claim) is not a fix. Catching that is the same job `audit`'s two-pass
 method already does for a whole draft — apply it to the one line that just changed, every time
 a line changes after the first pass, not just at the end.
+
+This holds above the line level too. A heading renamed mid-conversation, a section added or
+reordered, a subtitle changed after the headings were already set — each of these is a
+structural edit, and it inherits `structure`'s checks the same way a line inherits Grounding
+Rules: run the heading-collision check and the paragraph-reshuffle test again against the
+*whole* document, not just confirm the one changed piece reads fine on its own. An edit that
+only checks itself, in isolation from what it now sits beside, is exactly how a heading rename
+quietly collides with a heading three sections down that nobody re-read at the same time.
 
 ---
 

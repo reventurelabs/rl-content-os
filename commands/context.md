@@ -16,7 +16,7 @@ Run the `rl-context-discovery` skill now. The skill file is the source of truth;
    - What's worth publishing: ask for cases ("what did you regret skipping"), not a stated principle.
 3. **Draft `AUTHOR-CONTEXT.md`'s three sections** — every claim traceable to evidence or something actually said, not smoothed into something more generic. Note whether the result is evidence-informed or interview-derived in the context file's source-note line.
 4. **Validate.** Rank 2-3 candidate topics against the draft, ask if the order feels right, fold in corrections — re-rank a second time if the gap was significant.
-5. **Hand off.** `rl-repo-topic-scout` and `rl-content-pipeline` already read this file — nothing further to wire up.
+5. **Hand off.** `rl-topic-scout` and `rl-content-pipeline` already read this file — nothing further to wire up.
 
 ## Notes
 

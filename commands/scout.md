@@ -3,7 +3,7 @@ description: Scan this repo's git history for potential blog topics, then hand t
 argument-hint: '[lookback window, e.g. "past 2 weeks"] — defaults to since the last scout run, or 2 weeks'
 ---
 
-Run the `rl-repo-topic-scout` skill against the current repo now.
+Run the `rl-topic-scout` skill against the current repo now.
 
 **Request:** $ARGUMENTS
 

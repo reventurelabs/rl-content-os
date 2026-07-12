@@ -1,6 +1,6 @@
 # Author Context
 
-Read by `rl-repo-topic-scout` before ranking any topic shortlist, and by
+Read by `rl-topic-scout` before ranking any topic shortlist, and by
 `rl-content-pipeline`'s define step (1) before starting a piece — who you
 write for, why, and what "worth publishing" actually means to you. This file
 exists so an unattended or scheduled run has something durable to read,
@@ -11,7 +11,7 @@ version (checks existing evidence like an about page or past published
 content first, then interviews with technique designed to get past generic
 first answers), or fill in the first three sections below yourself, in your
 own words — no required format beyond those three headers, a few honest
-sentences each is enough. If `rl-repo-topic-scout` runs and finds this file
+sentences each is enough. If `rl-topic-scout` runs and finds this file
 still templated (unanswered), it asks you directly, once, then writes your
 answers back into this file so it doesn't have to ask again;
 `rl-content-pipeline` hands off to `rl-context-discovery` instead. The

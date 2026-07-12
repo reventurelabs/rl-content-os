@@ -1,6 +1,6 @@
 {
   "name": "reventure-labs",
-  "description": "Reventure Labs Content OS — structured long-form/high-stakes writing, repo-driven topic scouting, and guided voice/context discovery for Claude Code.",
+  "description": "Reventure Labs Content OS — structured long-form/high-stakes writing, evidence-grounded topic scouting, and guided voice/context discovery for Claude Code.",
   "owner": {
     "name": "Sean Schroeder"
   },
@@ -8,10 +8,10 @@
     {
       "name": "rl-content-os",
       "source": "./",
-      "description": "Reventure Labs Content OS: the structured /pipeline writing process, the /scout repo-topic-scanning command, the /voice and /context discovery builders, and the supporting rl-writing-craft skill. Bring your own closing-polish skill — none is bundled.",
+      "description": "Reventure Labs Content OS: the structured /pipeline writing process, the /scout topic-scanning command, the /voice and /context discovery builders, and the supporting rl-writing-craft skill. Bring your own closing-polish skill — none is bundled.",
       "skills": [
         "./skills/rl-content-pipeline",
-        "./skills/rl-repo-topic-scout",
+        "./skills/rl-topic-scout",
         "./skills/rl-writing-craft",
         "./skills/rl-voice-discovery",
         "./skills/rl-context-discovery"

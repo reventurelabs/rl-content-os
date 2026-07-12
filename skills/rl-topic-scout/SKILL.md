@@ -1,12 +1,15 @@
 ---
-name: rl-repo-topic-scout
+name: rl-topic-scout
 description: >-
-  Scans a repo's git history, README/CLAUDE.md, and recent structural changes
-  to surface a shortlist of concrete blog/content topics with evidence and an
-  angle for each — built for developers and builders who ship things but
-  rarely write about them. Grounds every candidate topic in something
-  verifiable (a commit range, a diff, a decision visible in commit messages)
-  rather than inventing a narrative. Hands the chosen topic and its evidence
+  Scans a repo's git history, README/CLAUDE.md, and recent structural
+  changes — and, where connected, Slack threads, meeting transcripts, and
+  sent email — to surface a shortlist of concrete blog/content topics with
+  evidence and an angle for each. Built for developers and builders who
+  ship things but rarely write about them, and for anyone whose best
+  material shows up in real decisions and explanations rather than a blank
+  page. Grounds every candidate topic in something verifiable (a commit
+  range, a diff, a decision visible in commit messages or a thread) rather
+  than inventing a narrative. Hands the chosen topic and its evidence
   directly into rl-content-pipeline's define/interview steps, so the writer
   isn't starting from a blank page. Trigger on "what should I write about,"
   "scout topics from this repo," "review my recent work for blog ideas," or
@@ -14,7 +17,7 @@ description: >-
   and a lookback window) to produce a periodic topic digest — see Notes.
 ---
 
-# Repo Topic Scout
+# Topic Scout
 
 Most developers who build something worth writing about never write about it —
 not because there's nothing to say, but because turning "I shipped a thing"

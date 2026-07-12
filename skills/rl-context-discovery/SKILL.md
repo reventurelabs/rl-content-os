@@ -4,7 +4,7 @@ description: >-
   Use when `AUTHOR-CONTEXT.md` is still the unfilled template, someone asks
   "help me figure out who I'm writing for," "why do I even write," "what
   should I actually be writing about," or when
-  `rl-repo-topic-scout`/`rl-content-pipeline` note the context isn't set
+  `rl-topic-scout`/`rl-content-pipeline` note the context isn't set
   up yet. Builds or refreshes `AUTHOR-CONTEXT.md` — who you write for, why
   you write, what "worth publishing" means to you — by checking existing
   evidence first (an about page, previously published content,
@@ -14,13 +14,13 @@ description: >-
   marketing-flavored non-answer on the first try). Validates the draft
   against a hypothetical ranked topic shortlist before finalizing. This is
   the guided version of the "ask once, persist the answer" fallback
-  `rl-repo-topic-scout` already has — a one-time (or occasional refresh)
+  `rl-topic-scout` already has — a one-time (or occasional refresh)
   discovery process, not a per-draft tool.
 ---
 
 # Context Discovery
 
-`rl-repo-topic-scout` already has a thin fallback: if `AUTHOR-CONTEXT.md`
+`rl-topic-scout` already has a thin fallback: if `AUTHOR-CONTEXT.md`
 is blank, ask once and persist the answer.
 That fallback is fine for someone who already knows exactly who they write
 for and why. It's thin for everyone else, because "why do you write" is a
@@ -129,10 +129,10 @@ the gap was significant.
 ## Step 5: Hand off
 
 Once `AUTHOR-CONTEXT.md` is written and validated, it's live —
-`rl-repo-topic-scout` and `rl-content-pipeline` already read it, nothing
+`rl-topic-scout` and `rl-content-pipeline` already read it, nothing
 further to wire up. Mention that this is a snapshot, not a permanent
 answer: ventures change, motivations shift, and nothing forces a refresh —
-if the ranked shortlist from `/scout` (`rl-repo-topic-scout`'s output)
+if the ranked shortlist from `/scout` (`rl-topic-scout`'s output)
 starts feeling consistently off, that's the signal to run this again, not a
 scheduled event.
 

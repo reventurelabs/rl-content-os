@@ -1,7 +1,7 @@
 # Reventure Labs Content OS
 
-A Claude Code skill suite for structured long-form writing and repo-driven
-topic scouting.
+A Claude Code skill suite for structured long-form writing and
+evidence-driven topic scouting.
 
 Most people who build things don't write about them — not for lack of
 anything to say, but because the work before the writing (finding a topic,
@@ -42,24 +42,25 @@ is cost-of-being-wrong, not word count.
 craft floor, the voice profile, and the context file apply to any writer,
 technical or not.
 
-**Developers with repos** also get `rl-repo-topic-scout` and, optionally, a
-recurring scheduled digest built on top of it (see
-[SCHEDULED-DIGEST-TEMPLATE.md](./SCHEDULED-DIGEST-TEMPLATE.md)) — these are
-specifically for surfacing topics from what you've actually built: commits,
-diffs, structural changes. If you don't have code repos, or don't want topics
-sourced that way, skip both entirely. You can still run `/pipeline` directly
-on your own topic ideas — `rl-repo-topic-scout` feeds `rl-content-pipeline`,
-it isn't required by it.
+**Anyone with a recurring source of real work** also gets `rl-topic-scout`
+and, optionally, a recurring scheduled digest built on top of it (see
+[SCHEDULED-DIGEST-TEMPLATE.md](./SCHEDULED-DIGEST-TEMPLATE.md)) — built for
+surfacing topics from work already done: a repo's commits and diffs, a
+Slack thread, a meeting, or your own sent email. Repos are the most common
+case, not a requirement. If none of that applies to you, skip both
+entirely. You can still run `/pipeline` directly on your own topic
+ideas — `rl-topic-scout` feeds `rl-content-pipeline`, it isn't required by
+it.
 
 ## What's here
 
 | Skill / command | What it does |
 |---|---|
 | `rl-content-pipeline` | Structured 10-step process for long-form content — blog posts, whitepapers, essays, case studies — or high-stakes content regardless of length: a short statement going out under the company's name, an announcement with no room to walk back a bad framing. Define, interview, brief, outline, draft, critique, revise, run the writing suite, refine, approve. Nothing ships until you explicitly say so. |
-| `rl-repo-topic-scout` | Scans a repo's git history, README/CLAUDE.md, and structural changes to surface 3-5 grounded topic candidates — each with evidence, an angle, and a "why now." Ranks candidates against the context file (`AUTHOR-CONTEXT.md`), and tags client/work-for-hire repos `[CLIENT WORK — confidential source]` rather than silently including or excluding them. Hands the pick straight into the content pipeline. |
+| `rl-topic-scout` | Scans a repo's git history, README/CLAUDE.md, and structural changes — or Slack threads, meeting transcripts, and sent email, where connected — to surface 3-5 grounded topic candidates — each with evidence, an angle, and a "why now." Ranks candidates against the context file (`AUTHOR-CONTEXT.md`), and tags client/work-for-hire sources `[CLIENT WORK — confidential source]` rather than silently including or excluding them. Hands the pick straight into the content pipeline. |
 | `rl-writing-craft` | Self-contained writing-quality skill: structure (architecture, flow, opens, closes), edit (line-level cutting, grounding, rhythm, anti-AI removal), audit (dedicated anti-AI pattern sweep), and copyedit (grammar, punctuation, usage, consistency, proofreading). General craft for any writer; layers under whatever author-voice skill you bring, which wins on register and rhythm. Works standalone too — it just won't impose a specific voice. |
 | `rl-voice-discovery` | Builds `VOICE-PROFILE.md` from real writing samples (or a structured interview if none exist), validated against a test passage. A one-time discovery process, not a per-draft tool — `rl-content-pipeline` and `rl-writing-craft` already check for the resulting file wherever they reference "your author-voice skill." |
-| `rl-context-discovery` | Builds or refreshes `AUTHOR-CONTEXT.md` — checks existing evidence (about page, published content, README/CLAUDE.md) first, then a guided interview specifically designed to get past generic first answers, validated against a hypothetical ranked topic shortlist. The guided version of the "ask once" fallback `rl-repo-topic-scout` already has. |
+| `rl-context-discovery` | Builds or refreshes `AUTHOR-CONTEXT.md` — checks existing evidence (about page, published content, README/CLAUDE.md) first, then a guided interview specifically designed to get past generic first answers, validated against a hypothetical ranked topic shortlist. The guided version of the "ask once" fallback `rl-topic-scout` already has. |
 | `/pipeline` | Deterministic entry point for the 10-step content pipeline — deterministic meaning typing the slash command always invokes this exact skill, rather than relying on Claude to infer the right skill from your request. |
 | `/scout` | Deterministic entry point for repo topic scouting, handing its pick straight into `/pipeline`. |
 | `/voice` | Deterministic entry point for building your voice profile. |
@@ -81,7 +82,7 @@ topics are all fictional):
 ```
 
 `AUTHOR-CONTEXT.md` at the repo root is a blank template — who you write for,
-why you write, and what "worth publishing" means to you. `rl-repo-topic-scout`
+why you write, and what "worth publishing" means to you. `rl-topic-scout`
 and `rl-content-pipeline` both read it before ranking or defining a topic,
 so filling it in once keeps both skills consistent about who you're actually
 writing for. In multi-repo or scheduled use, "repo root" stops being
@@ -151,7 +152,7 @@ git clone https://github.com/sdschroeder/reventure-content-os.git
 cd reventure-content-os
 
 ln -s "$PWD/skills/rl-content-pipeline" ~/.claude/skills/rl-content-pipeline
-ln -s "$PWD/skills/rl-repo-topic-scout" ~/.claude/skills/rl-repo-topic-scout
+ln -s "$PWD/skills/rl-topic-scout" ~/.claude/skills/rl-topic-scout
 ln -s "$PWD/skills/rl-writing-craft"    ~/.claude/skills/rl-writing-craft
 ln -s "$PWD/skills/rl-voice-discovery"  ~/.claude/skills/rl-voice-discovery
 ln -s "$PWD/skills/rl-context-discovery" ~/.claude/skills/rl-context-discovery
@@ -177,11 +178,12 @@ drafting in your own register instead of a neutral one — it'll ask for
 writing samples (or interview you if you don't have any) and produce
 `VOICE-PROFILE.md`.
 
-**3. Optional, developers with repos: set up the recurring digest.** See
+**3. Optional: set up the recurring digest.** See
 [SCHEDULED-DIGEST-TEMPLATE.md](./SCHEDULED-DIGEST-TEMPLATE.md) — copy the
-template, fill in its six bracketed placeholders (cadence, repo directory,
-how many repos to scan, the context file's path, delivery channel, delivery
-destination), and ask Claude to create the scheduled task from it.
+template, fill in the bracketed placeholders for whichever source(s) apply
+to you (repos, Slack channels, a meeting tool, sent email), the cadence,
+the context file's path, delivery channel, and delivery destination, and
+ask Claude to create the scheduled task from it.
 
 ## Credit
 
