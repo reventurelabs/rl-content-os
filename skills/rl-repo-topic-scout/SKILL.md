@@ -35,8 +35,10 @@ so the person picking a topic knows what they're looking at, and let them make
 the call — don't make it for them by silently including or blanket skipping.
 
 - **Repo scope (which repos are eligible) can be a fixed list or a live rule**
-  (e.g. "top N by activity, recomputed each run") — either is fine. What can't
-  be static is the tagging: a repo's client/confidential status gets
+  (e.g. "top N by activity, recomputed each run") — either is fine. Scope is
+  provided one of two ways: named explicitly in the request, or configured in
+  a scheduled task; when neither is given, the scope is the current repo. What
+  can't be static is the tagging: a repo's client/confidential status gets
   evaluated fresh on every scan, never inherited from a prior run or assumed
   because it wasn't flagged last time.
 - **Tag confidential-source topics distinctly — don't hide them, don't
@@ -44,7 +46,7 @@ the call — don't make it for them by silently including or blanket skipping.
   CLAUDE.md, or commit history names a specific client or employer, or
   otherwise reads as work-for-hire rather than the user's own venture, every
   topic candidate sourced from it gets a `[CLIENT WORK — confidential
-  source]` tag in the digest. It's a real candidate, surfaced like any
+  source]` tag in the shortlist. It's a real candidate, surfaced like any
   other — the tag exists so the person picking it knows the source, not to
   talk them out of picking it.
 - **Whether it needs genericizing is a judgment call made at pick time, not
@@ -70,23 +72,25 @@ why they write (the underlying motivation — documentation, thought
 leadership, building an audience, something else), and what "worth
 publishing" means to them.
 
-- **Read `AUTHOR-CONTEXT.md` at the repo root first, every run.** It's the
-  canonical, portable version of this context — the single place audiences,
-  ventures, and motivation live, not duplicated elsewhere. Built so an
-  unattended or scheduled run has something durable to read instead of a
-  question nobody's there to answer.
-- **If `AUTHOR-CONTEXT.md` doesn't exist, or its three sections are still
+- **Read `AUTHOR-CONTEXT.md` — the context file — at the repo root first,
+  every run.** It's the canonical, portable version of this context — the
+  single place audiences, ventures, and motivation live, not duplicated
+  elsewhere. Built so an unattended or scheduled run has something durable to
+  read instead of a question nobody's there to answer.
+- **If the context file doesn't exist, or its three sections are still
   the unfilled template, this is a live/interactive run's job to fix, not an
-  unattended run's.** For a quick fix, ask once, directly: who do you write
-  for, why do you write, what does a good outcome look like — then write the
-  answers back into `AUTHOR-CONTEXT.md`. For a more thorough one, hand off to
-  `rl-context-discovery` — it checks existing evidence first and uses
-  interview techniques specifically designed to get past generic first
-  answers (especially for "why do you write," which most people answer with
-  a marketing-flavored non-answer on the first try). An unattended run that
-  finds the template still empty should note that in the digest ("author
-  context not yet set up — ranking is a rough guess until this is filled
-  in") rather than silently guessing or blocking.
+  unattended run's.** Three paths:
+  - **Quick fix** — ask once, directly: who do you write for, why do you
+    write, what does a good outcome look like — then write the answers back
+    into `AUTHOR-CONTEXT.md`.
+  - **Thorough** — hand off to `rl-context-discovery`. It checks existing
+    evidence first and uses interview techniques specifically designed to
+    get past generic first answers (especially for "why do you write," which
+    most people answer with a marketing-flavored non-answer on the first
+    try).
+  - **Unattended run** — note it in the digest ("author context not yet set
+    up — ranking is a rough guess until this is filled in") rather than
+    silently guessing or blocking.
 
 Use this context to weight the shortlist, not just to fill in an "audience"
 field after the fact. A topic that's easy to evidence but serves no stated
@@ -137,6 +141,11 @@ own work before you've looked:
 
 ## Output: the shortlist
 
+The shortlist and the digest are the same artifact in two delivery modes —
+"shortlist" is what an interactive run presents, "digest" is what a scheduled
+multi-repo run delivers. A single-repo run produces 3-5 candidates; a
+multi-repo digest combines the per-repo shortlists and re-ranks them into 5-8.
+
 3-5 candidate topics, each with:
 
 - **Title** — working title, not a final headline.
@@ -144,7 +153,9 @@ own work before you've looked:
 - **Evidence** — the specific commit(s)/date range/files that ground it.
 - **Why now** — what makes this worth writing this week specifically (recency,
   a milestone, a decision that just got made). If the `last30days-skill` is
-  available, optionally use it to check whether the topic connects to
+  available — check via `ToolSearch`, the same pattern the "Beyond repos"
+  section uses for other optional sources; if it's absent, say so and
+  continue — optionally use it to check whether the topic connects to
   current outside discourse — that's a legitimate "why now" too, not just
   internal recency. If it isn't installed, don't block on it; a repo-only
   "why now" is sufficient, and it's fine to note in passing that installing
@@ -172,6 +183,8 @@ Once a topic is picked, feed it directly into `rl-content-pipeline`:
   it felt like at the time) rather than starting from nothing.
 
 ## Beyond repos — other input sources
+
+*Maintainer note — for extending this skill, not for a normal run.*
 
 Repos are one source of topic evidence, not the only one. Thinking out loud —
 the raw material for a lot of the best topics — happens in Slack threads,
@@ -213,6 +226,9 @@ add a source, follow the same shape this skill already uses for repos:
    the evidence.
 
 ## Notes
+
+*Maintainer note — context on how this skill is packaged and scheduled, not
+instructions for a normal run.*
 
 - This skill is read-only and safe to run unattended — it doesn't write,
   commit, or publish anything, just surfaces candidates.

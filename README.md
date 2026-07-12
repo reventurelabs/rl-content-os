@@ -12,19 +12,35 @@ burst of motivation, without lowering the bar on what gets published.
 
 It takes the opposite failure mode just as seriously: a draft that's fast to
 produce and not worth reading. Every step in `rl-content-pipeline` exists
-because skipping it produces a specific, known failure — drafting before the
-goal is pinned down produces fluent-but-aimless copy, skipping an outline
-gate means restructuring after the words are already written, and a
-self-review from the same context that wrote the draft is the weakest
-possible judge of it. Before anything reaches a human approval gate, the
-pipeline runs a criteria-scored review and a blind adversarial pass — a
-fresh, context-free reviewer whose only job is to try to kill the draft.
+because skipping it produces a specific, known failure:
+
+- Drafting before the goal is pinned down — fluent-but-aimless copy.
+- Skipping the outline gate — restructuring after the words are already
+  written.
+- Self-review by the same context that drafted — the weakest possible judge
+  of the draft.
+
+The subtlest version doesn't even look broken. It's a claim that sounds
+professional and confident, phrased well enough that nobody checks whether
+it's actually true — "systems that hold up under real use," "a comprehensive
+solution," anything that reads smoothly and means nothing specific once you
+press on it. That's the exact failure mode `rl-writing-craft`'s Grounding
+Rules exist to catch. Not bad writing. Unearned writing.
+
+Before anything reaches a human approval gate, the pipeline runs a
+criteria-scored review and a blind adversarial pass — a fresh, context-free
+reviewer whose only job is to try to kill the draft. And the pipeline isn't
+only for long pieces: it triggers just as much on high-stakes content
+regardless of length — a short statement going out under the company's name,
+an announcement with no room to walk back a bad framing. The real criterion
+is cost-of-being-wrong, not word count.
 
 ## Who needs what
 
 **Everyone** gets `rl-content-pipeline`, `rl-writing-craft`, `rl-voice-discovery`,
-and `AUTHOR-CONTEXT.md` — the writing process, the craft floor, and the voice
-profile apply to any writer, technical or not.
+`rl-context-discovery`, and `AUTHOR-CONTEXT.md` — the writing process, the
+craft floor, the voice profile, and the context file apply to any writer,
+technical or not.
 
 **Developers with repos** also get `rl-repo-topic-scout` and, optionally, a
 recurring scheduled digest built on top of it (see
@@ -39,28 +55,48 @@ it isn't required by it.
 
 | Skill / command | What it does |
 |---|---|
-| `rl-content-pipeline` | Structured 10-step process for long-form content — blog posts, whitepapers, essays, case studies. Define, interview, brief, outline, draft, critique, revise, run the writing suite, refine, approve. Nothing ships until you explicitly say so. |
-| `rl-repo-topic-scout` | Scans a repo's git history, README/CLAUDE.md, and structural changes to surface 3-5 grounded topic candidates — each with evidence, an angle, and a "why now." Hands the pick straight into the content pipeline. |
-| `rl-writing-craft` | Self-contained writing-quality skill: structure (architecture, flow, opens, closes), edit (line-level cutting, grounding, rhythm, anti-AI removal), audit (dedicated anti-AI pattern sweep), and copyedit (grammar, punctuation, usage, consistency). General craft for any writer; layers under whatever author-voice skill you bring, which wins on register and rhythm. Works standalone too — it just won't impose a specific voice. |
+| `rl-content-pipeline` | Structured 10-step process for long-form content — blog posts, whitepapers, essays, case studies — or high-stakes content regardless of length: a short statement going out under the company's name, an announcement with no room to walk back a bad framing. Define, interview, brief, outline, draft, critique, revise, run the writing suite, refine, approve. Nothing ships until you explicitly say so. |
+| `rl-repo-topic-scout` | Scans a repo's git history, README/CLAUDE.md, and structural changes to surface 3-5 grounded topic candidates — each with evidence, an angle, and a "why now." Ranks candidates against the context file (`AUTHOR-CONTEXT.md`), and tags client/work-for-hire repos `[CLIENT WORK — confidential source]` rather than silently including or excluding them. Hands the pick straight into the content pipeline. |
+| `rl-writing-craft` | Self-contained writing-quality skill: structure (architecture, flow, opens, closes), edit (line-level cutting, grounding, rhythm, anti-AI removal), audit (dedicated anti-AI pattern sweep), and copyedit (grammar, punctuation, usage, consistency, proofreading). General craft for any writer; layers under whatever author-voice skill you bring, which wins on register and rhythm. Works standalone too — it just won't impose a specific voice. |
 | `rl-voice-discovery` | Builds `VOICE-PROFILE.md` from real writing samples (or a structured interview if none exist), validated against a test passage. A one-time discovery process, not a per-draft tool — `rl-content-pipeline` and `rl-writing-craft` already check for the resulting file wherever they reference "your author-voice skill." |
-| `rl-context-discovery` | Builds or refreshes `AUTHOR-CONTEXT.md` — checks existing evidence (about page, published content, README/CLAUDE.md) first, then a guided interview specifically designed to get past generic first answers, validated against a hypothetical ranked topic shortlist. The guided version of the "ask once" fallback `rl-repo-topic-scout`/`rl-content-pipeline` already have. |
-| `/pipeline` | Deterministic entry point for the 10-step content pipeline. |
+| `rl-context-discovery` | Builds or refreshes `AUTHOR-CONTEXT.md` — checks existing evidence (about page, published content, README/CLAUDE.md) first, then a guided interview specifically designed to get past generic first answers, validated against a hypothetical ranked topic shortlist. The guided version of the "ask once" fallback `rl-repo-topic-scout` already has. |
+| `/pipeline` | Deterministic entry point for the 10-step content pipeline — deterministic meaning typing the slash command always invokes this exact skill, rather than relying on Claude to infer the right skill from your request. |
 | `/scout` | Deterministic entry point for repo topic scouting, handing its pick straight into `/pipeline`. |
 | `/voice` | Deterministic entry point for building your voice profile. |
 | `/context` | Deterministic entry point for building or refreshing `AUTHOR-CONTEXT.md`. |
+
+A `/scout` shortlist looks like this (illustrative — repos, commits, and
+topics are all fictional):
+
+```text
+1. Cutting cold-start time 40s → 6s in `queue-runner` — evidence: commits
+   3f2a91..8bc04d, lazy-loading the plugin registry; angle: the profiling
+   dead-end that made the fix obvious; why now: shipped this week.
+2. Replacing the retry decorator with an outbox table in `sync-engine` —
+   evidence: commit series reworking `sync/retry/`; angle: at-least-once
+   delivery is a data-model decision, not a library pick.
+3. [CLIENT WORK — confidential source] Rate-limit backoff rewrite in
+   `acme-integrations` — surfaced so you can decide; won't be drafted
+   without your explicit clearance.
+```
 
 `AUTHOR-CONTEXT.md` at the repo root is a blank template — who you write for,
 why you write, and what "worth publishing" means to you. `rl-repo-topic-scout`
 and `rl-content-pipeline` both read it before ranking or defining a topic,
 so filling it in once keeps both skills consistent about who you're actually
-writing for. Run `/context` for a guided version of filling it in, rather
+writing for. In multi-repo or scheduled use, "repo root" stops being
+well-defined — there the context file's location is a configured path (see
+the `[PATH TO YOUR AUTHOR-CONTEXT.md]` placeholder in the digest template).
+Run `/context` for a guided version of filling it in, rather
 than answering a single ad hoc question the first time a skill notices it's
 still blank.
 
-This suite doesn't bundle a content-generation skill or a closing-polish
-skill — bring your own (or write one) if you want a tailored register beyond
-what `rl-voice-discovery` produces. Only `rl-writing-craft` is a hard
-dependency. Without a voice reference at all, `rl-content-pipeline` still
+## Bring your own voice
+
+**Only `rl-writing-craft` is a hard dependency.** This suite doesn't bundle
+a content-generation skill or a closing-polish skill — bring your own (or
+write one) if you want a tailored register beyond what `rl-voice-discovery`
+produces. Without a voice reference at all, `rl-content-pipeline` still
 runs the full process (interview, brief, outline, adversarial review,
 approval gate) and drafts directly from the brief/outline using
 `rl-writing-craft`'s floor — you get a competent, neutral-voiced draft
@@ -143,8 +179,9 @@ writing samples (or interview you if you don't have any) and produce
 
 **3. Optional, developers with repos: set up the recurring digest.** See
 [SCHEDULED-DIGEST-TEMPLATE.md](./SCHEDULED-DIGEST-TEMPLATE.md) — copy the
-template, fill in your repo path and cadence, and ask Claude to create the
-scheduled task from it.
+template, fill in its six bracketed placeholders (cadence, repo directory,
+how many repos to scan, the context file's path, delivery channel, delivery
+destination), and ask Claude to create the scheduled task from it.
 
 ## Credit
 

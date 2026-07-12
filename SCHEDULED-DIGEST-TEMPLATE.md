@@ -56,10 +56,11 @@ on your own topic ideas instead.
 
 ## Simpler starting point
 
-If full autonomous drafting feels like too much to start with, drop step 5
-entirely — a scheduled task that only does steps 1-4 (scan, scout, rank,
-shortlist) and delivers the shortlist alone is a safer, smaller first
-version. Add auto-drafting later once you trust the ranking.
+If full autonomous drafting feels like too much to start with, drop steps
+4-5 — auto-select is pointless without drafting. A scheduled task that only
+does steps 1-3 (scan, scout, rank) and delivers step 3's ranked shortlist
+alone is a safer, smaller first version. Add auto-selection and drafting
+later once you trust the ranking.
 
 ## After creating it
 

@@ -1,16 +1,16 @@
 ---
 name: rl-voice-discovery
 description: >-
-  Builds a portable voice profile — register, rhythm, phrase preferences,
-  what to avoid — from either real writing samples (preferred) or a
-  structured interview when no samples exist, then validates it against a
-  test passage before finalizing. Produces `VOICE-PROFILE.md` at the repo
-  root, which `rl-content-pipeline` and `rl-writing-craft` already
-  reference generically as "your author-voice skill." Use when someone has
-  no author-voice skill set up yet, asks "help me find my voice," "build a
-  voice profile," "what does my writing actually sound like," or when
-  `rl-content-pipeline` notes no author-voice skill is configured. This is
-  a one-time (or occasional refresh) discovery process, not something invoked
+  Use when someone has no author-voice skill set up yet, asks "help me find
+  my voice," "build a voice profile," "what does my writing actually sound
+  like," or when `rl-content-pipeline` notes no author-voice skill is
+  configured. Builds a portable voice profile — register, rhythm, phrase
+  preferences, what to avoid — from either real writing samples (preferred)
+  or a structured interview when no samples exist, then validates it
+  against a test passage before finalizing. Produces `VOICE-PROFILE.md` at
+  the repo root, which `rl-content-pipeline` and `rl-writing-craft` already
+  reference generically as "your author-voice skill." This is a one-time
+  (or occasional refresh) discovery process, not something invoked
   per-draft — once `VOICE-PROFILE.md` exists, the other skills read it
   directly. Does not replace a fuller, continuously-evolving voice skill
   (one built from your own ongoing corrections over time will always be
@@ -92,9 +92,8 @@ Cover, at minimum:
 
 ## Step 3: Draft the profile
 
-Write `VOICE-PROFILE.md` with these sections — match `SEAN-VOICE-PROFILE.md`'s
-shape if you want a concrete reference, but the structure below is sufficient
-on its own:
+Write `VOICE-PROFILE.md` with these sections — the template below is the
+shape:
 
 ```
 # Voice Profile
@@ -120,8 +119,16 @@ where possible.]
 
 ## Critical Voice Guidelines
 [The handful of rules that most protect this voice from getting flattened
-by editing — the equivalent of writing-craft's anti-AI-tell floor, but
-specific to this person: what would make a draft stop sounding like them.]
+by editing — the equivalent of `rl-writing-craft`'s audit function and
+Grounding Rules, but specific to this person: what would make a draft stop
+sounding like them.]
+
+## Corrections
+[Empty at first write. This section accumulates over time — see "Capturing
+durable preferences" in `rl-content-pipeline`. Each entry is a specific
+word-choice or register correction the writer made on a real draft, not a
+guess: what got corrected, and why, so the same fix doesn't need making
+twice.]
 ```
 
 Every claim in the profile should be traceable to something in the actual
@@ -146,8 +153,16 @@ Once `VOICE-PROFILE.md` is written and validated, it's live — `rl-content-pipe
 and `rl-writing-craft` already check for "your author-voice skill" and will
 find this file. Tell the person this is a starting point, not a finished
 system: a voice skill that evolves through their ongoing corrections over
-real drafts (the way `sean-voice` does, for the person maintaining this
-suite privately) will always outperform a one-time discovery pass. If they
-want that fuller system, the next step is tracking their actual corrections
-over time and updating `VOICE-PROFILE.md` accordingly — this skill produces
-the seed, not the finished thing.
+real drafts (the way a continuously-maintained author-voice skill does)
+will always outperform a one-time discovery pass. That's what the
+Corrections section is for — `rl-content-pipeline` appends to it directly
+as real redirections happen on real pieces (see "Capturing durable
+preferences" there), so the profile keeps improving without another
+discovery pass. This skill produces the seed, not the finished thing.
+
+## Notes
+
+- A deterministic entry point for this skill is the `/voice` command.
+- `VOICE-PROFILE.md` covers how you sound. The suite reads a second file,
+  `AUTHOR-CONTEXT.md` (the context file — who you write for and why);
+  `rl-context-discovery` is the matching discovery tool for that one.

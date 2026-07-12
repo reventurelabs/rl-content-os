@@ -1,17 +1,17 @@
 ---
 name: rl-writing-craft
-description: "Self-contained writing-quality skill with four functions: structure (architecture, flow, openings, closes), edit (line-level cutting, grounding, rhythm, anti-AI removal woven in), audit (dedicated anti-AI pattern sweep), and copyedit (grammar, punctuation, usage, consistency, proofreading). Use whenever writing or editing prose — articles, posts, essays, emails, reports, any written content. Invoked generically ('edit this,' 'tighten this,' 'make this better,' 'run the writing skill') it runs the full sequence: structure, edit, audit, copyedit. Single functions run by name: 'structure pass,' 'line edit,' 'anti-AI pass,' 'copyedit,' 'proofread,' 'check grammar.' General craft for any writer; layers under an author voice skill which wins on register and rhythm. Copyedit corrects errors in service of voice, never imposing style rules a voice deliberately breaks. Does not set voice itself."
+description: "Self-contained writing-quality skill with four functions: structure (architecture, flow, openings, closes), edit (line-level cutting, grounding, rhythm, anti-AI removal woven in), audit (dedicated anti-AI pattern sweep), and copyedit (grammar, punctuation, usage, consistency, proofreading). Use whenever writing or editing prose — articles, posts, essays, emails, reports, any written content. Invoked generically ('edit this,' 'tighten this,' 'make this better,' 'run the writing skill') it runs the full sequence: structure, edit, audit, copyedit. Single functions run by name: 'structure pass,' 'line edit,' 'anti-AI pass,' 'copyedit,' 'proofread,' 'check grammar.' General craft for any writer; layers under an author-voice skill which wins on register and rhythm. Copyedit corrects errors in service of voice, never imposing style rules a voice deliberately breaks. Does not set voice itself."
 ---
 
 # Writing Craft — Structure, Edit, Audit, Copyedit
 
-A general writing-quality skill. Three functions, each independently callable, defaulting
+A general writing-quality skill. Four functions, each independently callable, defaulting
 to a full sequence when invoked generically.
 
 This skill does **not** set voice. Register, rhythm, and the things that make writing
-sound like a specific person belong to the author skill layered on top. This skill shapes
-the architecture, tightens the lines, and removes machine-writing patterns. The author
-skill always wins where they touch the same sentence.
+sound like a specific person belong to the author-voice skill layered on top. This skill
+shapes the architecture, tightens the lines, and removes machine-writing patterns. The
+author-voice skill always wins where they touch the same sentence.
 
 ---
 
@@ -39,23 +39,29 @@ edit, audit, copyedit. Name a single function to run it alone.
 
 ---
 
-## Sequencing With an Author Skill
+## Sequencing With an Author-Voice Skill
 
-The full pipeline, when an author voice skill is present:
+The full pipeline, when a voice layer is present. The voice layer is your
+content-generation skill (venture/brand lane) or your author-voice skill (personal lane)
+— two distinct optional roles; the sequence is the same for both:
 
 1. **Draft** — content produced
-2. **Author voice skill** — sets register and rhythm (e.g. sean-voice)
+2. **Voice layer** — sets register and rhythm (your content-generation skill or your
+   author-voice skill)
 3. **`structure`** — shapes the architecture
 4. **`edit`** — tightens lines, removes tells, applies grounding rules
 5. **`audit`** — final mechanical sweep
 6. **`copyedit`** — grammar, punctuation, usage, consistency, proofreading (errors only)
 
-The author skill runs first because voice decisions shape what the structure should be.
-The audit runs last because it catches tells introduced by every prior pass. If no author
-skill is present, check for `VOICE-PROFILE.md` at the repo root (produced by
+The voice layer runs first because voice decisions shape what the structure should be.
+The audit runs last because it catches tells introduced by every prior pass. If no
+author-voice skill is present, check for `VOICE-PROFILE.md` at the repo root (produced by
 `rl-voice-discovery`) before concluding there's no voice reference at all — treat it the
-same as an author skill would be treated in step 2. Only with neither present does this
-skill run with no imposed register.
+same as an author-voice skill would be treated in step 2. Only with neither present does
+this skill run with no imposed register.
+
+(The step-by-step mechanics of the four-function run live in "Running the Full Sequence"
+near the bottom of this file.)
 
 **Carve-out:** Intentional structural techniques are not AI tells. Section breaks (`* * *`),
 one-sentence paragraphs for percussion, sentence fragments for rhythm, em-dashes as breath
@@ -65,17 +71,57 @@ words in body prose), never the technique itself.
 
 ---
 
-# FUNCTION 1: `structure`
+## Logical Consistency — Grave Errors
+
+Separate from structure and line quality: does the argument actually hold together? Treat
+every item below as a blocking error, not a style preference — smooth prose can still be
+logically broken, and that's a worse failure than awkward prose, because it survives every
+pass that only reads for tone.
+
+- **A label must match what it does.** If a passage is called a "test," it has to function as
+  one — a procedure the reader could run. If it's actually a description, an account, or a
+  framework, name it that instead. (Example: "the cleanest test I know" introduced
+  two conditions to weigh, not a procedure — fixed to "the clearest account I've found.")
+- **A recap must cover what it claims to recap.** When a section establishes multiple
+  failure modes, causes, or conditions, any later diagnostic or summary invoking that same
+  framework must include all of them — especially the one the piece's own central example
+  demonstrates. Silently dropping one is a logical gap, not a trim. (Example:
+  Hogarth's framework named feedback that's late, missing, *or drowned in too much of it* —
+  but the diagnostic recap later listed only the first two, omitting the exact failure mode
+  the piece's opening story was about.)
+- **Pronouns need an antecedent before they're used, not after.** "Arguing opposite sides of
+  it" when "it" is named as "intuition" only in the following clause leaves the reader with
+  nothing to attach the pronoun to in the moment they read it. This is a comprehension gap,
+  not just a style nit.
+- **Claims of personal knowledge vs. sourced knowledge must be accurate.** "The cleanest test
+  I know" claims lived, personal ownership of something that was actually learned from
+  research. That's a misattribution of where the claim's authority comes from, not a tone
+  issue.
+- **A causal or comparative chain can't quietly swap its terms.** If two distinct conditions
+  are introduced (e.g., "the right training" vs. "the right environment"), later sections
+  can't conflate them or leave it ambiguous which one a diagnosis is actually about.
+
+Run this check on every pass, not just `copyedit` — a logical inconsistency can be introduced
+during `structure` (a recap that outlives the framework it referenced) or `edit` (a fix to one
+sentence that breaks a pronoun's antecedent two sentences later). Surface it explicitly even
+when the surrounding prose reads cleanly.
+
+---
+
+## FUNCTION 1: `structure`
 
 Architectural editing. The order, the shape, the joints. What goes where and why.
+Run the Logical Consistency check (see above) on this pass too.
 
-## Opening
+### Opening
 
 The opening earns the read or loses it. Two patterns work:
 
 **Cold open — drop into the middle of something.** A specific moment, an action already
 underway, a claim already in motion. No throat-clearing, no context-setting, no "in today's
-world." The reader assembles the frame from the first concrete detail.
+world." The reader assembles the frame from the first concrete detail. This rule governs
+*where* the piece starts — no warmup before the scene; ordering *within* the opening scene
+is the edit function's "Orient Before You Move" rule, and the two compose.
 
 **Declared verdict — state the position, then earn it.** The first sentence is the claim
 the rest of the piece will defend. No windup, no question, no scene.
@@ -85,7 +131,7 @@ landscape of..."), a definition, a rhetorical question the reader can't yet care
 a statistic before there's a reason to want it, or autobiography that hasn't earned its
 place ("I've always been fascinated by...").
 
-## Flow and Section Logic
+### Flow and Section Logic
 
 Each section advances. Test every section against the one before it: does it add something
 new — a turn, a complication, a deepening — or restate what's already established? If it
@@ -106,41 +152,7 @@ no new information — and sags in the middle-to-end. This usually happens becau
 version predates the concrete one in the draft and both got left in. When a strong concrete
 beat is present, cut the abstract versions it replaces. They don't stack.
 
-## Logical Consistency — Grave Errors
-
-Separate from structure and line quality: does the argument actually hold together? Treat
-every item below as a blocking error, not a style preference — smooth prose can still be
-logically broken, and that's a worse failure than awkward prose, because it survives every
-pass that only reads for tone.
-
-- **A label must match what it does.** If a passage is called a "test," it has to function as
-  one — a procedure the reader could run. If it's actually a description, an account, or a
-  framework, name it that instead. (Caught in Article 3: "the cleanest test I know" introduced
-  two conditions to weigh, not a procedure — fixed to "the clearest account I've found.")
-- **A recap must cover what it claims to recap.** When a section establishes multiple
-  failure modes, causes, or conditions, any later diagnostic or summary invoking that same
-  framework must include all of them — especially the one the piece's own central example
-  demonstrates. Silently dropping one is a logical gap, not a trim. (Caught in Article 3:
-  Hogarth's framework named feedback that's late, missing, *or drowned in too much of it* —
-  but the diagnostic recap later listed only the first two, omitting the exact failure mode
-  the article's opening story was about.)
-- **Pronouns need an antecedent before they're used, not after.** "Arguing opposite sides of
-  it" when "it" is named as "intuition" only in the following clause leaves the reader with
-  nothing to attach the pronoun to in the moment they read it. This is a comprehension gap,
-  not just a style nit.
-- **Claims of personal knowledge vs. sourced knowledge must be accurate.** "The cleanest test
-  I know" claims lived, personal ownership of something that was actually learned from
-  research. That's a misattribution of the claim's own epistemic status, not a tone issue.
-- **A causal or comparative chain can't quietly swap its terms.** If two distinct conditions
-  are introduced (e.g., "the right training" vs. "the right environment"), later sections
-  can't conflate them or leave it ambiguous which one a diagnosis is actually about.
-
-Run this check on every pass, not just `copyedit` — a logical inconsistency can be introduced
-during `structure` (a recap that outlives the framework it referenced) or `edit` (a fix to one
-sentence that breaks a pronoun's antecedent two sentences later). Surface it explicitly even
-when the surrounding prose reads cleanly.
-
-## The Close
+### The Close
 
 The last line does something the second-to-last line cannot. It is not a summary, not a
 recap, not a restatement of the opening.
@@ -158,9 +170,10 @@ What never closes a piece: a thesis restatement, a motivational flourish ("the f
 to those who..."), a moralizing line about what this means for the reader's character, a call
 to action bolted onto an argument, or a summary paragraph. If the last paragraph could be
 deleted without losing anything, it's the wrong close — find the real one, usually the line
-just before the summary.
+just before the summary. On CTAs: conversion formats (landing page, email) end on a CTA by
+design; the ban is on argument formats (essay, blog post), where a CTA is bolted on.
 
-## Format Defaults
+### Format Defaults
 
 The opening/flow/close principles above are universal. These are the concrete parameters for
 common formats — apply the format's defaults on top of the general principles, not instead of
@@ -183,16 +196,17 @@ audience is currently living. Body = one insight fully developed. Close = a cons
 structural offer depending on funnel stage.
 
 **Newsletter:** Written to one subscriber, not a segment — the letter frame, not the broadcast
-frame. Send from a real human address with reply-to enabled; a no-reply/info@ sender undercuts
-the letter frame before the body even starts. The welcome/first email matters disproportionately
-— it sets expectations for cadence and content, which heads off unsubscribes and complaints more
-cheaply than any later re-engagement effort.
+frame.
+  *Ops note (delivery, not structure):* send from a real human address with reply-to enabled —
+  a no-reply/info@ sender undercuts the letter frame before the body even starts. The
+  welcome/first email matters disproportionately: it sets expectations for cadence and content,
+  which heads off unsubscribes and complaints more cheaply than any later re-engagement effort.
 
 **Personal voice / newsletter-as-yourself:** These format defaults are for brand/venture
 content. Writing as yourself (Substack, personal LinkedIn, direct outreach) follows your own
 voice instead — the author-voice skill layered on top wins here, not this section.
 
-## Structural Output
+### Structural Output
 
 When running `structure`, return: what the opening is doing and whether it earns the read;
 where the flow stalls, treadmills, or restates; whether any sections are reshuffleable modules;
@@ -201,32 +215,40 @@ lines — that's the `edit` function.
 
 ---
 
-# FUNCTION 2: `edit`
+## FUNCTION 2: `edit`
 
 Line-level editing. Readability, cutting, grounding, rhythm. Anti-AI removal woven through.
+Run the Logical Consistency check (see above) on this pass too.
 
-## The Core Instinct: Cut
+### The Core Instinct: Cut
 
 Default to cutting, not adding. When a line could go without loss, it goes. When in doubt,
-cut it out. Most drafts are too long, too hedged, and too eager to re-explain — the editing
-job is mostly subtraction. A shorter piece that makes its point cleanly beats a longer one
-that makes it three times.
+cut it out. The default failure mode of a draft is excess — too long, too hedged, too eager
+to re-explain — so the editing job is mostly subtraction. A shorter piece that makes its
+point cleanly beats a longer one that makes it three times.
 
-## Grounding Rules (Hard Stops)
+### Grounding Rules
 
 These are the highest-value line edits. Every one is a form of writing reaching past what's
 true or earned. The fix is always the same: cut to what's real — either a specific, grounded
 account or a claim carried by a named source. The vague middle — plausible-sounding material
 that asserts without grounding — never survives. Flag every instance.
 
+Seven rules, two severities. The first five are HARD STOPS — P0 in the audit's severity tiers,
+fixed before anything else. The last two are STRONG FLAGS — P1, fixed before publishing.
+
 **Population quantifiers — HARD STOP.** Any claim that quantifies a population or a span into
-a proportion. "Most people treat experience like..." "Most professionals never..." And the
-inverse — "Almost none of...," "Few ever...," "The majority of...," "Nearly all..." A sentence
-opening with "Most" is almost always making a claim the writer has no standing to make. The
-inverse is the identical move pointed the other way, equally unfounded. Not as an opener, not
-buried mid-sentence, not even about oneself ("most of my days"). Replace with ONLY: (a) a
-specific account of what actually happened, or (b) a claim attributed to a named source. No
-"in general," "tends to," "more often than not" as smuggled versions of the same move.
+a proportion. A sentence opening with "Most" is almost always making a claim the writer has no
+standing to make. Not as an opener, not buried mid-sentence, not even about oneself ("most of
+my days").
+
+Examples: "Most people treat experience like..." "Most professionals never..." The inverse —
+"Almost none of...," "Few ever...," "The majority of...," "Nearly all..." — is the identical
+move pointed the other way, equally unfounded.
+
+Replace with ONLY: (a) a specific account of what actually happened, or (b) a claim attributed
+to a named source. No "in general," "tends to," "more often than not" as smuggled versions of
+the same move.
 
 **Invented interiority — HARD STOP.** Narrating what a person thought, felt, was trying to
 do, or realized — when the source never said so. "It named the thing I'd been trying to say."
@@ -240,20 +262,38 @@ in first-person testimony. When a paragraph wants a personal anchor and there is
 CUT the paragraph — don't fabricate. Ask the writer for the real example first; if there isn't
 one, cut. If the structural point can be made plainly without the anecdote, make it plainly.
 
-**Manufactured vulnerability.** Performing difficulty, struggle, or doubt as a rhetorical move.
+**Manufactured vulnerability — HARD STOP.** Performing difficulty, struggle, or doubt as a rhetorical move.
 "I have to admit..." "I used to be more disciplined about this." Real candor doesn't announce
 itself. If there's genuine complexity, work through it without signaling that honesty is coming.
 
-**Unmeasured quantitative flourish.** Attaching measurement language to something never
+**Unearned capability claim — HARD STOP.** A confident assertion about quality, reliability, or
+capability with no specific, checkable referent behind it. "Systems that hold up under real
+use." "A comprehensive solution." "Built for scale." It's the subtlest violation in this list
+because it doesn't look broken — the sentence is fluent and reads as professional, which is
+exactly the problem: it's polish standing in for evidence. This is what "AI slop" actually is
+more often than not; not bad prose, unearned prose.
+
+The test: swap the subject for a competitor, or a hypothetical company that does none of this.
+Does the sentence still read as true? If yes, it was never actually about the specific thing —
+it's a slot that could hold anything.
+
+Replace with ONLY: (a) the actual specific fact being gestured at — what, concretely, holds up,
+and how would a reader check it — or (b) cut the sentence outright. Sounding confident is not
+the same as being earned. Related, narrower mechanisms elsewhere in this file: Hollow compound
+phrases (Vocabulary) catches the noun-phrase version of this same move; the brand-brief test
+(Audience Calibration) catches it from the angle of who would actually say the sentence out
+loud. This rule is the general case both of those are instances of.
+
+**Unmeasured quantitative flourish — STRONG FLAG.** Attaching measurement language to something never
 measured. "Building the wrong habit, faster." "It taught him twice as much." "Faster," "more,"
 "twice as much" imply data. If the rate or amount wasn't observed, don't imply it was.
 
-**Smuggled domain metaphor.** Carrying domain-specific language from a concrete example into
-the general claim it illustrates. After a sports scene, describing the reader's work in the
-sport's vocabulary. The scene illustrates; it doesn't keep coloring the abstraction. Leave the
-domain fully behind in the general point — including in the verbs.
+**Smuggled domain metaphor — STRONG FLAG.** Carrying domain-specific language from a concrete
+example into the general claim it illustrates. After a baseball scene, "keep your swing level
+through the quarter" applied to office work. The scene illustrates; it doesn't keep coloring
+the abstraction. Leave the domain fully behind in the general point — including in the verbs.
 
-## Throat-Clearing and False Cohesion
+### Throat-Clearing and False Cohesion
 
 **Throat-clearing.** Any phrase that warms up to the point instead of making it: "Here's the
 thing," "The truth is," "Let me be clear," "What you need to understand is," "So what do you
@@ -279,9 +319,9 @@ the audience genuinely believes right now, so the correction does real work. "No
 a teammate" is empty if nobody thought it was just a tool. If X is a strawman the reader never
 held, cut the construction and state Y directly.
 
-## Sentence Rhythm
+### Sentence Rhythm
 
-**Burstiness.** Mix very short sentences (3–8 words) with long ones (20+). Avoid the AI
+**Burstiness.** Mix short sentences (3–8 words) with long ones (20+). Avoid the AI
 pattern of consistent 12–18 word sentences. Short sentences land; long ones develop. A
 fragment works. A one-sentence paragraph works. If three or more consecutive sentences fall
 in a similar length-and-structure band, break the block.
@@ -297,11 +337,11 @@ consecutive sentences opening with the same word ("Your... Your... Your..."), mu
 sentences with identical structure, consecutive paragraphs opening the same way. Break them
 deliberately.
 
-**Readability ceiling.** Independent of burstiness (which wants variety, including genuinely
-long sentences): most sentences should still land under ~25 words, and most paragraphs under
-~3 sentences / 6 lines. This is a baseline floor, not a cap on the long half of the burstiness
-mix — a deliberate 30-word sentence for development is fine; a paragraph that's wandered to
-eight dense sentences before its first break usually hasn't.
+**Readability baseline.** Independent of burstiness (which wants variety, including genuinely
+long sentences): ~25 words is the default expectation a sentence should land under, and ~3
+sentences / 6 lines the default for a paragraph. This is a baseline, not a cap on the long
+half of the burstiness mix — a deliberate 30-word sentence for development is fine; a
+paragraph that's wandered to eight dense sentences before its first break usually hasn't.
 
 **Prefer active voice by default.** Passive constructions bury the actor and add words for no
 gain — "the decision was made" instead of who made it. Default to active; flag passive used as
@@ -311,7 +351,7 @@ emphasis on the object over the doer are legitimate reasons to keep it passive).
 **Exclamation points — restraint.** One earns attention; three in a page reads as manufactured
 enthusiasm. Cut all but the one that's actually doing work, if any.
 
-## Vocabulary
+### Vocabulary
 
 **Banned filler — cut on sight:**
 - *actually* — almost always deletable. "That's actually what led me" → "That's what led me."
@@ -332,7 +372,8 @@ enthusiasm. Cut all but the one that's actually doing work, if any.
 strategy but say nothing: "durable competitive advantage," "sustainable growth trajectory,"
 "meaningful organizational impact," "robust solution," "holistic approach." Each one is a slot
 where a specific claim should be. Either name the actual advantage/growth/impact, or cut the
-phrase.
+phrase. This is the noun-phrase form of Unearned capability claim (Grounding Rules) — same
+failure, smaller unit.
 
 **Generic business language — translate to specific human language:**
 - "billable capacity" → "hours you can actually charge for"
@@ -350,7 +391,7 @@ repeat it. Forced variation reads as thesaurus abuse.
 "features," "boasts," "represents." Use "is" or "has" unless a specific verb genuinely adds
 meaning.
 
-## Lists and Structured Content
+### Lists and Structured Content
 
 **Convert parallel lists to prose where possible.** In long-form, a bulleted list of parallel
 points usually wants to be a fragment run ("Drafting. Generating. Processing volume at speed.")
@@ -363,7 +404,7 @@ the next is four. Don't use the same grammatical frame for every item. Let the m
 item run longer. Parallel structure across every item is the tell; deliberate unevenness is
 the fix.
 
-## Section-by-Section Uniformity
+### Section-by-Section Uniformity
 
 Global checks miss locally uniform sections inside an otherwise varied piece. After the
 whole-document pass, scan each major section on its own:
@@ -374,7 +415,7 @@ whole-document pass, scan each major section on its own:
 
 A section can pass the global rhythm check and still be robotic on its own. Catch it locally.
 
-## Audience Calibration
+### Audience Calibration
 
 **Don't over-narrow the audience.** Ground examples in the subject itself — the craft, the
 work, the universal version of the activity — not in a narrow tool or sub-practice that
@@ -386,15 +427,21 @@ doubt, pick the example that includes more of the audience.
 something that brand would say to a specific person standing in front of them. "We deliver
 comprehensive solutions that drive results" is a brand describing itself. "You'll have
 something running by Friday, not a slide deck" is something said to a person. The test catches
-self-referential corporate voice that no individual would ever say out loud.
+self-referential corporate voice that no individual would ever say out loud — the same failure
+Unearned capability claim (Grounding Rules) names directly, approached from a different angle:
+would a specific person say this to a specific other person, or only a brand say it to no one
+in particular.
 
-## Orient Before You Move
+### Orient Before You Move
 
 A concrete scene needs its frame before the specific details depend on it. Name the domain,
 setting, or activity first — "my seven-year-old's *baseball* swing" before "tee" and "barrel."
-Don't drop the reader into action and make them assemble the context from jargon.
+Don't drop the reader into action and make them assemble the context from jargon. This rule
+governs ordering *within* the opening scene — name the domain in the first concrete beat; the
+cold-open rule governs *where* the piece starts. They compose, not conflict: open cold, and
+let that first concrete detail carry its own frame.
 
-## Editorial Output
+### Editorial Output
 
 When running `edit`, return the edited text with changes applied, a list of what changed and
 why (grouped by type), and any grounding-rule flags that need the writer's ruling (a missing
@@ -403,15 +450,16 @@ flagged gap — surface it.
 
 ---
 
-# FUNCTION 3: `audit`
+## FUNCTION 3: `audit`
 
 Dedicated anti-AI sweep. Mechanical pattern detection run clean against finished copy. This is
 the final pass — it catches what survived the edit and what the edit introduced.
 
 Run this even after a thorough `edit` pass. Editing fixes tells on the lines it touches; the
-audit reads the whole finished piece fresh and catches what slipped through.
+audit reads the whole finished piece fresh and catches what slipped through. Run the Logical
+Consistency check (see above) on this pass too.
 
-## Severity Tiers
+### Severity Tiers
 
 **P0 — fix before anything else:**
 - Chatbot artifacts: "Certainly!", "Great question!", "I'd be happy to," "Feel free to reach
@@ -419,9 +467,11 @@ audit reads the whole finished piece fresh and catches what slipped through.
 - Vague attribution: "experts believe," "studies show," "research suggests" with no named source
 - Significance inflation on routine events ("marking a pivotal moment in the evolution of...")
 - Any grounding-rule violation that survived edit: population quantifiers, invented interiority,
-  manufactured experience, manufactured vulnerability
+  manufactured experience, manufactured vulnerability, unearned capability claims
 
 **P1 — fix before publishing:**
+- Grounding-rule strong flags that survived edit: unmeasured quantitative flourish, smuggled
+  domain metaphor
 - Throat-clearing openers and section pivots
 - AI connective tissue ("Which means...," "That's why...," "turns out to be")
 - False callbacks
@@ -435,11 +485,12 @@ audit reads the whole finished piece fresh and catches what slipped through.
 **P2 — fix when time allows:**
 - Copula avoidance ("serves as," "boasts")
 - Uniform paragraph length
-- Compulsive rule of three
+- Compulsive rule of three (three parallel items used as a reflex — triple adjectives, triple
+  examples, triple clauses — where one or two would do)
 - Generic business language clusters
 - Locally uniform sections (section-by-section scan)
 
-## The Two-Pass Method
+### The Two-Pass Method
 
 The audit runs twice on its own output:
 
@@ -449,7 +500,7 @@ The audit runs twice on its own output:
 a rephrase reaches for an AI verb, a tightened transition becomes a soft reveal. Catch the
 survivors and the new arrivals. If the second pass is clean, say so.
 
-## Audit Output
+### Audit Output
 
 When running `audit`, return: every tell found, quoted, grouped by severity; the corrected
 text; a brief note on what changed; and the second-pass result. If the copy is clean, say that
@@ -457,13 +508,13 @@ plainly rather than inventing flags to look thorough.
 
 ---
 
-# FUNCTION 4: `copyedit`
+## FUNCTION 4: `copyedit`
 
 The mechanical-correctness layer — grammar, punctuation, usage, consistency, proofreading.
 What a copyeditor and proofreader provide after the writing and editing are done. Runs last,
-against near-final copy.
+against near-final copy. Run the Logical Consistency check (see above) on this pass too.
 
-## The Governing Principle: Style Over Form
+### The Governing Principle: Style Over Form
 
 **Correct errors. Never impose style rules the voice deliberately breaks.** This is the line
 the whole function turns on. There are two categories, and the function only touches one.
@@ -476,8 +527,8 @@ per the type.
 distinctive voice routinely overrides: sentence fragments, sentence-initial "And"/"But"/"So,"
 ending a sentence on a preposition, the occasional comma splice used for rhythm, one-sentence
 paragraphs, deliberately short or deliberately long sentences. The author chose these. They are
-voice, not error. **Do not "correct" them.** If the author skill protects a move (fragments for
-percussion, em-dashes as breath), this function honors that protection absolutely.
+voice, not error. **Do not "correct" them.** If the author-voice skill protects a move (fragments
+for percussion, em-dashes as breath), this function honors that protection absolutely.
 
 The test for any flagged item: *did the writer choose this, or slip?* A fragment for emphasis is
 a choice. "Their going to the store" is a slip. Fix slips. Leave choices.
@@ -485,7 +536,7 @@ a choice. "Their going to the store" is a slip. Fix slips. Leave choices.
 When genuinely unsure whether something is a deliberate stylistic choice or an error, flag it as
 a question rather than fixing it — never silently overwrite a possible voice decision.
 
-## Grammar — Fix (Unambiguous Errors)
+### Grammar — Fix (Unambiguous Errors)
 
 - **Subject–verb agreement.** "The list of items are long" → "is long."
 - **Pronoun–antecedent agreement** where it creates real confusion (not singular "they," which
@@ -501,7 +552,7 @@ a question rather than fixing it — never silently overwrite a possible voice d
   misused), fewer/less (countable vs. mass), who/whom only where the error is jarring,
   comprise/compose, lay/lie where misused.
 
-## Punctuation — Fix (Mechanical Errors)
+### Punctuation — Fix (Mechanical Errors)
 
 - **Comma splices** that read as errors (two independent clauses joined by a comma) — but NOT
   when used deliberately for rhythm in a short, balanced pair ("I came, I saw"). Judgment call;
@@ -522,7 +573,7 @@ a question rather than fixing it — never silently overwrite a possible voice d
 - **Quotation mark and punctuation placement** per consistent convention (US: periods and
   commas inside; logical/UK if that's the established style — match the document, don't impose).
 
-## Usage and Word-Level — Fix or Flag
+### Usage and Word-Level — Fix or Flag
 
 - **Wrong word / malapropism:** "for all intensive purposes" → "intents and purposes";
   "could care less" → flag (idiom debate, author's call).
@@ -531,7 +582,7 @@ a question rather than fixing it — never silently overwrite a possible voice d
 - **Misused literally**, "begs the question" (if precision matters to the audience) — flag,
   don't force.
 
-## Consistency — Fix (Silent Where Obvious)
+### Consistency — Fix (Silent Where Obvious)
 
 - **Spelling convention:** US vs. UK throughout (-ize/-ise, -or/-our, traveled/travelled). Pick
   what the document predominantly uses and make it consistent.
@@ -545,7 +596,7 @@ a question rather than fixing it — never silently overwrite a possible voice d
 - **Spacing:** one space after periods (unless the document is deliberately otherwise), no
   double spaces, consistent spacing around dashes.
 
-## Proofreading — Fix
+### Proofreading — Fix
 
 - **Typos and misspellings.**
 - **Doubled words** ("the the"), **missing words** ("going to store").
@@ -554,7 +605,7 @@ a question rather than fixing it — never silently overwrite a possible voice d
 - **Inconsistent or broken formatting** — a heading that doesn't match its siblings, a list with
   a missing marker.
 
-## What `copyedit` Never Does
+### What `copyedit` Never Does
 
 - Never "fixes" intentional fragments, sentence-initial conjunctions, or one-sentence paragraphs.
 - Never converts deliberate rhythm choices (short punchy sentences, a long breathless one) into
@@ -562,9 +613,9 @@ a question rather than fixing it — never silently overwrite a possible voice d
 - Never imposes the active voice where passive is a deliberate or correct choice.
 - Never flattens voice in the name of grammar. If a "rule" and the author's voice conflict, the
   voice wins — this function only catches what the writer would agree is a mistake.
-- Never overrides a protection set by the author skill (the voice layer's deliberate moves).
+- Never overrides a protection set by the author-voice skill (the voice layer's deliberate moves).
 
-## Copyedit Output
+### Copyedit Output
 
 When running `copyedit`, return: the corrected copy; a list of fixes grouped by type (grammar,
 punctuation, usage, consistency, proofreading); and a separate list of *flagged judgment calls*
@@ -573,10 +624,11 @@ than silent fixes. If the copy is mechanically clean, say so plainly.
 
 ---
 
-# Running the Full Sequence
+## Running the Full Sequence
 
 When invoked generically ("run the writing skill," "edit this," "make this better"), run all
-four in order and return the result of each stage:
+four in order and return the result of each stage. (How this sequence slots under a voice
+layer is covered in "Sequencing With an Author-Voice Skill" near the top of this file.)
 
 1. **`structure`** — report architectural issues and apply agreed reorderings/cuts. If the
    structure needs the writer's decision (which of two openings, whether to cut a section),
@@ -592,16 +644,26 @@ Between stages, pause at genuine forks — a missing personal anchor, an unverif
 choice between two valid structures. Don't fabricate to keep moving. A flagged gap the writer
 fills beats a smooth invention.
 
+**Replacement text inherits the check it replaced.** A fix applied mid-sequence — a line
+rewritten because `edit` flagged it, a sentence swapped out during a later revision pass, a
+rewrite made in response to the writer's own redirection — is new text, not a patch exempt
+from scrutiny. Run it back through whichever check flagged the original problem, Grounding
+Rules at minimum, before treating the fix as final. A rewrite that trades one violation for a
+different one (a vague sentence replaced with a fabricated fact, a cliché replaced with an
+unmeasured quantitative claim) is not a fix. Catching that is the same job `audit`'s two-pass
+method already does for a whole draft — apply it to the one line that just changed, every time
+a line changes after the first pass, not just at the end.
+
 ---
 
-# What This Skill Does Not Do
+## What This Skill Does Not Do
 
-- **Set voice register or rhythm signature** — that's the author skill layered on top. This
+- **Set voice register or rhythm signature** — that's the author-voice skill layered on top. This
   skill won't make writing sound like a specific person; it makes writing structurally sound,
   tight, grounded, and free of machine patterns.
 - **Inject personality to defeat detection** — this skill cuts to what's earned; it never adds
   manufactured asides, vulnerability, or current-events backdrop to seem more human. Humanity
-  comes from real specifics and a real voice (the author skill's job), not from injected tics.
+  comes from real specifics and a real voice (the author-voice skill's job), not from injected tics.
 - **Fabricate to fill gaps** — flags missing anchors and unverifiable claims for the writer;
   never papers over them.
 - **Make series or project-level architecture decisions** — those belong to the writer and
@@ -609,7 +671,7 @@ fills beats a smooth invention.
 
 ---
 
-# Sourcing Note
+## Sourcing Note
 
 The structural principles (cold opens, callback discipline, closes that point forward instead
 of summarizing) draw on general editing craft shared across journalism and writing-craft

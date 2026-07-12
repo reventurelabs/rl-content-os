@@ -1,26 +1,27 @@
 ---
 name: rl-context-discovery
 description: >-
-  Builds or refreshes `AUTHOR-CONTEXT.md` — who you write for, why you write,
-  what "worth publishing" means to you — by checking existing evidence first
-  (an about page, previously published content, README/CLAUDE.md files) and
-  then running a guided interview specifically designed to get past generic,
-  socially-acceptable answers (especially for "why do you write," which
-  almost everyone answers with a marketing-flavored non-answer on the first
-  try). Validates the draft against a hypothetical ranked topic shortlist
-  before finalizing. Use when `AUTHOR-CONTEXT.md` is still the unfilled
-  template, someone asks "help me figure out who I'm writing for," "why do I
-  even write," "what should I actually be writing about," or when
+  Use when `AUTHOR-CONTEXT.md` is still the unfilled template, someone asks
+  "help me figure out who I'm writing for," "why do I even write," "what
+  should I actually be writing about," or when
   `rl-repo-topic-scout`/`rl-content-pipeline` note the context isn't set
-  up yet. This is the guided version of the "ask once, persist the answer"
-  fallback those two skills already have — a one-time (or occasional
-  refresh) discovery process, not a per-draft tool.
+  up yet. Builds or refreshes `AUTHOR-CONTEXT.md` — who you write for, why
+  you write, what "worth publishing" means to you — by checking existing
+  evidence first (an about page, previously published content,
+  README/CLAUDE.md files) and then running a guided interview specifically
+  designed to get past generic, socially-acceptable answers (especially for
+  "why do you write," which almost everyone answers with a
+  marketing-flavored non-answer on the first try). Validates the draft
+  against a hypothetical ranked topic shortlist before finalizing. This is
+  the guided version of the "ask once, persist the answer" fallback
+  `rl-repo-topic-scout` already has — a one-time (or occasional refresh)
+  discovery process, not a per-draft tool.
 ---
 
 # Context Discovery
 
-`rl-repo-topic-scout` and `rl-content-pipeline` already have a thin
-fallback: if `AUTHOR-CONTEXT.md` is blank, ask once and persist the answer.
+`rl-repo-topic-scout` already has a thin fallback: if `AUTHOR-CONTEXT.md`
+is blank, ask once and persist the answer.
 That fallback is fine for someone who already knows exactly who they write
 for and why. It's thin for everyone else, because "why do you write" is a
 question almost everyone answers with a polished, generic non-answer on the
@@ -59,9 +60,10 @@ answer:
   customers, not as an honest account of who the writing itself is for.
 
 If none of this exists, that's fine — proceed straight to the interview
-with a blank slate. Note in the final profile whether it's evidence-informed
-or purely interview-derived, the same way `rl-voice-discovery` flags
-confidence level.
+with a blank slate. Note whether the result is evidence-informed or purely
+interview-derived in the finished context file's source-note line (the
+final italic line of the `AUTHOR-CONTEXT.md` template), the same way
+`rl-voice-discovery` flags confidence level.
 
 ## Step 2: Interview for what evidence can't reveal
 
@@ -70,10 +72,12 @@ the generic first answer:
 
 **Who do you write for?** Push for distinctness, not a list. If there are
 multiple audiences (several ventures, several publications, a personal
-voice alongside a professional one), treat them separately — for each one,
-ask what it specifically needs that the others don't. "Everyone who's
-interested" is not an answer; ask for the one sentence that would make a
-wrong-audience reader immediately realize a piece isn't for them.
+voice alongside a professional one), treat them separately. "Everyone who's
+interested" is not an answer. Instead:
+- "What does this audience specifically need that the others don't?" (asked
+  per audience, not once for the whole list)
+- "What's the one sentence that would make a wrong-audience reader
+  immediately realize a piece isn't for them?"
 
 **Why do you write?** The hardest one. Don't ask it directly first — it
 invites a marketing answer. Instead:
@@ -98,18 +102,24 @@ passionate about") is usually too vague to rank anything against.
 
 ## Step 3: Draft AUTHOR-CONTEXT.md
 
-Fill the existing three sections — Who I write for, Why I write, What
-"worth publishing" means to me — from steps 1 and 2 combined. Every claim
+Fill the first three sections — Who I write for, Why I write, What "worth
+publishing" means to me — from steps 1 and 2 combined. Every claim
 traceable to either real evidence or something the person actually said in
 the interview; don't smooth a rough, specific answer into something more
 generic-sounding on the way into the file. The rough version is usually the
 useful one.
 
+Leave the fourth section, Redirections, empty on a first write — it isn't
+part of the interview. That section accumulates over time as
+`rl-content-pipeline` captures durable corrections from real pieces (see
+"Capturing durable preferences" there); this skill only creates the empty
+section, it doesn't populate it.
+
 ## Step 4: Validate against a hypothetical ranking
 
 Construct 2-3 candidate topics — real ones if there's a repo or recent work
 to draw on, illustrative ones if not — and rank them according to the draft
-profile. Show the ranking and ask directly: does this order feel right,
+context file. Show the ranking and ask directly: does this order feel right,
 would you actually want to write the top pick before the others? A
 correction here is higher-signal than anything from the interview, because
 it's a reaction to a concrete ordering rather than a description of a
@@ -122,5 +132,10 @@ Once `AUTHOR-CONTEXT.md` is written and validated, it's live —
 `rl-repo-topic-scout` and `rl-content-pipeline` already read it, nothing
 further to wire up. Mention that this is a snapshot, not a permanent
 answer: ventures change, motivations shift, and nothing forces a refresh —
-if the ranked shortlist starts feeling consistently off, that's the signal
-to run this again, not a scheduled event.
+if the ranked shortlist from `/scout` (`rl-repo-topic-scout`'s output)
+starts feeling consistently off, that's the signal to run this again, not a
+scheduled event.
+
+## Notes
+
+- A deterministic entry point for this skill is the `/context` command.
