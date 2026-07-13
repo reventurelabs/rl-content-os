@@ -81,7 +81,7 @@ topics are all fictional):
    without your explicit clearance.
 ```
 
-`AUTHOR-CONTEXT.md` at the repo root is a blank template — who you write for,
+`AUTHOR-CONTEXT.md` at the repo root is a blank template — who you are, who you write for,
 why you write, and what "worth publishing" means to you. `rl-topic-scout`
 and `rl-content-pipeline` both read it before ranking or defining a topic,
 so filling it in once keeps both skills consistent about who you're actually

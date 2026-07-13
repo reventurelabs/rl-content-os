@@ -1,7 +1,7 @@
 {
   "name": "rl-content-os",
   "description": "Reventure Labs Content OS — a skill suite for structured long-form writing and evidence-grounded topic scouting in Claude Code. Single source of truth, version-controlled, published as a Claude Code plugin marketplace.",
-  "version": "0.15.0",
+  "version": "0.18.0",
   "author": {
     "name": "Sean Schroeder"
   }

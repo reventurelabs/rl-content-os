@@ -2,21 +2,27 @@
 
 Read by `rl-topic-scout` before ranking any topic shortlist, and by
 `rl-content-pipeline`'s define step (1) before starting a piece — who you
-write for, why, and what "worth publishing" actually means to you. This file
-exists so an unattended or scheduled run has something durable to read,
-instead of asking a question nobody's there to answer.
+are, who you write for, why, and what "worth publishing" actually means to
+you. This file exists so an unattended or scheduled run has something
+durable to read, instead of asking a question nobody's there to answer.
 
 If you're setting this up for the first time: run `/context` for a guided
 version (checks existing evidence like an about page or past published
 content first, then interviews with technique designed to get past generic
-first answers), or fill in the first three sections below yourself, in your
-own words — no required format beyond those three headers, a few honest
+first answers), or fill in the first four sections below yourself, in your
+own words — no required format beyond those four headers, a few honest
 sentences each is enough. If `rl-topic-scout` runs and finds this file
 still templated (unanswered), it asks you directly, once, then writes your
 answers back into this file so it doesn't have to ask again;
 `rl-content-pipeline` hands off to `rl-context-discovery` instead. The
-fourth section, Redirections, isn't something you fill in by hand — leave
+fifth section, Redirections, isn't something you fill in by hand — leave
 it as-is; `rl-content-pipeline` appends to it on its own.
+
+## Who I am
+
+[Not a bio or a job title — what actually gives you standing to write this:
+what you've done, built, or lived through that a reader should know before
+trusting what you say.]
 
 ## Who I write for
 

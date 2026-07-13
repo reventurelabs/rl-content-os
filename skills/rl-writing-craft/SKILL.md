@@ -92,7 +92,11 @@ pass that only reads for tone.
 - **Pronouns need an antecedent before they're used, not after.** "Arguing opposite sides of
   it" when "it" is named as "intuition" only in the following clause leaves the reader with
   nothing to attach the pronoun to in the moment they read it. This is a comprehension gap,
-  not just a style nit.
+  not just a style nit. The same applies to **definite references** — "the structure," "this
+  approach," "that problem" — which assert the noun was already introduced. A section *heading*
+  does not count as that introduction: "Structure is what does the work" reads fine as a fresh
+  claim under a heading, but "*The* structure is what does the work" points back at a body
+  sentence that never ran. Drop the article, or introduce the noun in prose first.
 - **Claims of personal knowledge vs. sourced knowledge must be accurate.** "The cleanest test
   I know" claims lived, personal ownership of something that was actually learned from
   research. That's a misattribution of where the claim's authority comes from, not a tone
@@ -294,6 +298,23 @@ phrases (Vocabulary) catches the noun-phrase version of this same move; Verdict 
 (Vocabulary) catches the single-word version; the brand-brief test (Audience Calibration)
 catches it from the angle of who would actually say the sentence out loud. This rule is the
 general case all three are instances of.
+
+**Causal-superlative overclaim — HARD STOP.** A claim that names one thing as *the* reason, *the*
+point, or what *made something possible* — a sole-cause or existential frame — when the true claim
+is smaller: it was a priority, one of several goals, or mattered without being decisive. "It's the
+reason the product exists at all." "That's the entire point." "None of this works without X." The
+tell is a sole-cause or existential frame doing work a more modest, checkable claim would do
+honestly.
+
+The test: say the smaller version out loud — "it was a goal from day one," "one of several things
+we cared about," "it mattered, but the product would've shipped without it" — and ask which is
+actually true. Superlative causal claims are rarely checkable and almost always inflate; the writer
+usually knows the smaller version is the honest one when asked directly. Use the smaller true one
+unless the big one is genuinely defensible with evidence.
+
+This is the causal-origin sibling of Unearned capability claim (above): the same inflation, aimed at
+*why something exists* rather than *how good it is* — so the swap-the-subject test doesn't catch it,
+and this separate check exists to.
 
 **Unmeasured quantitative flourish — STRONG FLAG.** Attaching measurement language to something never
 measured. "Building the wrong habit, faster." "It taught him twice as much." "Faster," "more,"
@@ -511,7 +532,8 @@ Consistency check (see above) on this pass too.
 - Vague attribution: "experts believe," "studies show," "research suggests" with no named source
 - Significance inflation on routine events ("marking a pivotal moment in the evolution of...")
 - Any grounding-rule violation that survived edit: population quantifiers, invented interiority,
-  manufactured experience, manufactured vulnerability, unearned capability claims
+  manufactured experience, manufactured vulnerability, unearned capability claims, causal-superlative
+  overclaims
 
 **P1 — fix before publishing:**
 - Grounding-rule strong flags that survived edit: unmeasured quantitative flourish, smuggled

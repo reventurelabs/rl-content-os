@@ -5,8 +5,9 @@ description: >-
   "help me figure out who I'm writing for," "why do I even write," "what
   should I actually be writing about," or when
   `rl-topic-scout`/`rl-content-pipeline` note the context isn't set
-  up yet. Builds or refreshes `AUTHOR-CONTEXT.md` — who you write for, why
-  you write, what "worth publishing" means to you — by checking existing
+  up yet. Builds or refreshes `AUTHOR-CONTEXT.md` — who you are, who you
+  write for, why you write, what "worth publishing" means to you — by
+  checking existing
   evidence first (an about page, previously published content,
   README/CLAUDE.md files) and then running a guided interview specifically
   designed to get past generic, socially-acceptable answers (especially for
@@ -45,6 +46,13 @@ about yourself in the abstract.
 Before asking anything, look for material that already reveals part of the
 answer:
 
+- **A user-level or global CLAUDE.md, or a personal memory file** (e.g.
+  `~/.claude/CLAUDE.md`, an existing memory system) — often already has
+  real professional background or standing written down for Claude's own
+  use, sitting there unused for this. Check it specifically for the "Who I
+  am" section before running that part of the interview — it's usually the
+  most direct source available, since it wasn't written to impress anyone,
+  just to inform Claude.
 - **An existing about page, bio, or company site** — often states an
   intended audience directly, even if in marketing language that needs
   translating into something more specific.
@@ -67,8 +75,21 @@ final italic line of the `AUTHOR-CONTEXT.md` template), the same way
 
 ## Step 2: Interview for what evidence can't reveal
 
-Three questions to answer, each with a specific technique for getting past
+Four questions to answer, each with a specific technique for getting past
 the generic first answer:
+
+**Who are you?** Check step 1's evidence first — a global CLAUDE.md or
+memory file often already answers this honestly, since it wasn't written
+to impress anyone. If it's there, confirm it rather than re-asking from
+scratch. If it isn't, resist the LinkedIn-headline answer. Not "a
+consultant who helps companies do X" — that's positioning-speak, not
+standing. Instead:
+- "What do you actually spend your time doing, day to day, that your title
+  doesn't capture?"
+- "What do you know how to do — or have actually done — that most people
+  writing about this topic don't?"
+This is what gives the writing its authority: not a job title, a real
+reason for the reader to trust what's being said.
 
 **Who do you write for?** Push for distinctness, not a list. If there are
 multiple audiences (several ventures, several publications, a personal
@@ -102,14 +123,14 @@ passionate about") is usually too vague to rank anything against.
 
 ## Step 3: Draft AUTHOR-CONTEXT.md
 
-Fill the first three sections — Who I write for, Why I write, What "worth
-publishing" means to me — from steps 1 and 2 combined. Every claim
-traceable to either real evidence or something the person actually said in
-the interview; don't smooth a rough, specific answer into something more
-generic-sounding on the way into the file. The rough version is usually the
-useful one.
+Fill the first four sections — Who I Am, Who I write for, Why I write,
+What "worth publishing" means to me — from steps 1 and 2 combined. Every
+claim traceable to either real evidence or something the person actually
+said in the interview; don't smooth a rough, specific answer into something
+more generic-sounding on the way into the file. The rough version is
+usually the useful one.
 
-Leave the fourth section, Redirections, empty on a first write — it isn't
+Leave the fifth section, Redirections, empty on a first write — it isn't
 part of the interview. That section accumulates over time as
 `rl-content-pipeline` captures durable corrections from real pieces (see
 "Capturing durable preferences" there); this skill only creates the empty
