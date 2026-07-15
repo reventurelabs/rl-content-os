@@ -166,6 +166,16 @@ the document's heading list as a whole. Run this check after any heading is adde
 or reordered — not only during a full structural pass — because that's exactly when a
 collision gets introduced without anyone looking at the full list at the same time.
 
+**The one-idea-per-paragraph check.** Separate from the length baseline in `edit` (which caps a
+paragraph at ~3 sentences before it should break): a paragraph that fuses two or more *distinct
+ideas* reads as jumbled even when it isn't especially long and every sentence is clean on its own.
+Split it so each idea gets its own paragraph — and pull the sharpest, shortest sentence out to
+stand alone as its own beat rather than leaving it buried mid-block. "It stops there." lands harder
+alone than as the third clause of a longer sentence. This failure is invisible from inside a
+sentence-level edit: the prose reads fine line by line, and only the paragraph's shape, seen whole,
+shows the pile-up. Run it on any paragraph that changes topic partway through, not only on long
+ones.
+
 ### The Close
 
 The last line does something the second-to-last line cannot. It is not a summary, not a
