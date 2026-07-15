@@ -169,6 +169,19 @@ multi-repo digest combines the per-repo shortlists and re-ranks them into 5-8.
   anything"), not a generic guess — left open for the writer to confirm or
   override.
 
+**`last30days-skill` has a second use: discovery, not just validation.** The
+why-now check above uses external discourse to sharpen a topic that already
+came from the author's own work. But recent discourse is also a source in its
+own right — a conversation already happening out there that the author has
+real standing to enter (an evidenced position, actual experience, a decision
+they've made) is a legitimate candidate, surfaced and ranked like any other:
+by fit with the author's goals and audience, grounded in something real, with
+the same four fields. The grounding bar doesn't drop because a topic is
+timely — a trending conversation the author has no evidence or genuine
+position on is a temptation, not a candidate. When discovery is the mode,
+the "Evidence" field points at both the outside conversation *and* the
+author's own basis for entering it, not the discourse alone.
+
 Order the shortlist by fit with the author's stated goals and audiences, not
 by evidence strength or recency alone — those break ties, they don't set the
 order. Present these as options to pick from, not an open "what do you want
