@@ -127,12 +127,9 @@ npx skills add reventurelabs/rl-content-os --skill '*' -a claude-code
 Or install one at a time: `npx skills add reventurelabs/rl-content-os --skill rl-content-pipeline -a claude-code`.
 Use `--list` first to see what's available without installing anything.
 
-**Caveats, both real:** this only installs `SKILL.md` files, not the
+**One caveat:** this only installs `SKILL.md` files, not the
 `commands/` directory — you'll still want step 2 below for `/pipeline`
-etc. And this repo is currently **private**, so `npx skills add` will only
-work for whoever already has git access to it (it's doing a clone under the
-hood) — not a stranger who finds the repo name somewhere. That changes once
-this goes public.
+etc.
 
 ### Option B — Plugin marketplace (recommended once you want ongoing updates)
 
