@@ -121,10 +121,10 @@ This repo's `skills/rl-*/SKILL.md` files already match the flat layout the
 special setup is needed on this end:
 
 ```bash
-npx skills add sdschroeder/reventure-content-os --skill '*' -a claude-code
+npx skills add reventurelabs/rl-content-os --skill '*' -a claude-code
 ```
 
-Or install one at a time: `npx skills add sdschroeder/reventure-content-os --skill rl-content-pipeline -a claude-code`.
+Or install one at a time: `npx skills add reventurelabs/rl-content-os --skill rl-content-pipeline -a claude-code`.
 Use `--list` first to see what's available without installing anything.
 
 **Caveats, both real:** this only installs `SKILL.md` files, not the
@@ -137,7 +137,7 @@ this goes public.
 ### Option B — Plugin marketplace (recommended once you want ongoing updates)
 
 ```bash
-git clone https://github.com/sdschroeder/reventure-content-os.git
+git clone https://github.com/reventurelabs/rl-content-os.git
 ```
 
 Add the cloned repo as a local plugin marketplace source in Claude Code,
@@ -148,8 +148,8 @@ future updates automatically.
 ### Option C — Manual symlinks (best if you want to edit skills in place)
 
 ```bash
-git clone https://github.com/sdschroeder/reventure-content-os.git
-cd reventure-content-os
+git clone https://github.com/reventurelabs/rl-content-os.git
+cd rl-content-os
 
 ln -s "$PWD/skills/rl-content-pipeline" ~/.claude/skills/rl-content-pipeline
 ln -s "$PWD/skills/rl-topic-scout" ~/.claude/skills/rl-topic-scout
