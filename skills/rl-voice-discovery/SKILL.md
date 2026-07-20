@@ -6,18 +6,15 @@ description: >-
   like," or when `rl-content-pipeline` notes no author-voice skill is
   configured. Builds a portable voice profile — register, rhythm, phrase
   preferences, what to avoid — from real writing samples (preferred when
-  they exist), a structured interview (when there are no samples, or
-  whenever the person wants to name a voice they're building toward rather
-  than just the one already on the page — legitimate either way, the same
-  way someone directs a ghostwriter), or both together, then validates it
-  against a test passage before finalizing. Produces `VOICE-PROFILE.md` at
-  the repo root, which `rl-content-pipeline` and `rl-writing-craft` already
-  reference generically as "your author-voice skill." This is a one-time
-  (or occasional refresh) discovery process, not something invoked
-  per-draft — once `VOICE-PROFILE.md` exists, the other skills read it
-  directly. Does not replace a fuller, continuously-evolving voice skill
-  (one built from your own ongoing corrections over time will always be
-  more accurate than a one-time discovery pass) — it produces the seed, not
+  they exist), a structured interview (when there are no samples, or when
+  the person wants to name a voice they are building toward rather than the
+  one already on the page), or both together, then validates it against a
+  test passage before finalizing. Produces `VOICE-PROFILE.md` at the repo
+  root, which `rl-content-pipeline` and `rl-writing-craft` reference
+  generically as "your author-voice skill." A one-time (or occasional
+  refresh) process, not invoked per-draft — once the file exists, other
+  skills read it directly. Does not replace a fuller, continuously-evolving
+  voice skill built from ongoing corrections — this produces the seed, not
   the finished thing.
 ---
 

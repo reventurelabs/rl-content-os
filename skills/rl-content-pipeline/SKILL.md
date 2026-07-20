@@ -1,26 +1,21 @@
 ---
 name: rl-content-pipeline
 description: >-
-  Structured 10-step writing process, triggered by either of two independent
-  conditions — long-form content (blog posts, whitepapers, essays, case
-  studies, anything past ~800 words) OR high-stakes content regardless of
-  length (a short statement going out under the company's name, an
-  announcement with no room to walk back a bad framing). Cost-of-being-wrong
-  is the real criterion; length is only one proxy for it. Orchestrates the
-  existing writing skills (your content-generation and author-voice skills
-  for generation, rl-writing-craft for structure/edit/audit/copyedit, plus an
-  optional closing polish skill if you have one, e.g. ann-handley-voice) — it
-  does not duplicate their rules, it sequences them. Adds what a single draft
-  skips: define topic/angle/goal, interview the SME/author to surface
-  specifics and resolve ambiguity, write a creative brief, outline before
-  drafting, draft section by section, review the draft against the brief,
-  revise, run the writing suite, refine, and get explicit approval before
-  anything is considered done. Trigger on "blog post," "whitepaper," "essay,"
-  "long-form," "this needs to be right," "write this properly," or any
-  explicit request for the structured/step-by-step process. For low-stakes
-  quick-turn formats (a routine LinkedIn post, a routine email, social copy)
-  use your content-generation or author-voice skill directly — this skill is
-  overhead they don't need.
+  Structured 10-step writing process for long-form content (blog posts,
+  whitepapers, essays, case studies, past ~800 words) OR high-stakes content
+  regardless of length (a statement under the company's name, an
+  announcement with no room to walk back a bad framing) — cost-of-being-wrong
+  is the real criterion, length is only a proxy. Orchestrates existing
+  writing skills (content-generation and author-voice for generation,
+  rl-writing-craft for structure/edit/audit/copyedit, plus an optional
+  closing polish skill e.g. ann-handley-voice) — sequences them, does not
+  duplicate their rules. Adds what a single draft skips: define
+  topic/angle/goal, interview the SME, write a brief, outline, draft section
+  by section, review against the brief, revise, run the writing suite,
+  refine, get explicit approval. Trigger on "blog post," "whitepaper,"
+  "essay," "long-form," "this needs to be right." For low-stakes quick-turn
+  formats (routine LinkedIn post, email, social copy) use content-generation
+  or author-voice directly.
 ---
 
 # Content Pipeline — Structured 10-Step Writing Process
