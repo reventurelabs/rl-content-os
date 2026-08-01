@@ -198,6 +198,17 @@ as real redirections happen on real pieces (see "Capturing durable
 preferences" there), so the profile keeps improving without another
 discovery pass. This skill produces the seed, not the finished thing.
 
+**A signal for when the profile itself is the problem.** If drafts keep needing
+heavy rewrites well after the profile is in place and the Corrections section
+already has real entries in it, that's usually not a sign the drafts need more
+editing — it's a sign the profile's own rules are still too abstract to steer
+generation. As a rough rule of thumb, not a hard threshold: light-to-moderate
+revision on most drafts is normal; heavy revision on nearly every draft is the
+signal. When that happens, go back to Step 3 and replace whatever's still a
+vibe-descriptor ("conversational," "direct") with the concrete, checkable
+version Step 2 was supposed to extract, rather than concluding the writer just
+needs to keep editing harder.
+
 ## Notes
 
 - A deterministic entry point for this skill is the `/voice` command.

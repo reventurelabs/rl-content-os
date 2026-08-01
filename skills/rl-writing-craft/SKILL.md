@@ -258,8 +258,8 @@ true or earned. The fix is always the same: cut to what's real — either a spec
 account or a claim carried by a named source. The vague middle — plausible-sounding material
 that asserts without grounding — never survives. Flag every instance.
 
-Seven rules, two severities. The first five are HARD STOPS — P0 in the audit's severity tiers,
-fixed before anything else. The last two are STRONG FLAGS — P1, fixed before publishing.
+Eight rules, two severities. The first five are HARD STOPS — P0 in the audit's severity tiers,
+fixed before anything else. The last three are STRONG FLAGS — P1, fixed before publishing.
 
 **Population quantifiers — HARD STOP.** Any claim that quantifies a population or a span into
 a proportion. A sentence opening with "Most" is almost always making a claim the writer has no
@@ -335,6 +335,19 @@ example into the general claim it illustrates. After a baseball scene, "keep you
 through the quarter" applied to office work. The scene illustrates; it doesn't keep coloring
 the abstraction. Leave the domain fully behind in the general point — including in the verbs.
 
+**Studied neutrality — STRONG FLAG.** Retreating to "there are tradeoffs on both sides," "it
+depends," or a both-sides survey when the material actually gathered — the interview, the
+evidence, the brief's own stated angle — supports taking a real position. Heavy AI use
+measurably increases neutral-position-taking relative to a writer's own baseline; it's the
+model's default gravity, not a neutral act of fairness, and left unchecked it's a direct
+route to writing that reads like everyone else's. The test: does the material already in
+hand support a specific verdict? If yes, state it, then handle real counterarguments by
+naming and narrowing them precisely — not by diluting the claim into mush to avoid seeming
+to take a side. Not every topic has a real verdict to take; accurately reporting a genuinely
+close call isn't this violation. The flag is for retreating from a side the evidence already
+supports, not for calling a toss-up a toss-up. (Referred to elsewhere in this skill suite as
+"commit to a position" / "vary certainty" — this is that rule, made specific and checkable.)
+
 ### Throat-Clearing and False Cohesion
 
 **Throat-clearing.** Any phrase that warms up to the point instead of making it: "Here's the
@@ -393,6 +406,15 @@ emphasis on the object over the doer are legitimate reasons to keep it passive).
 **Exclamation points — restraint.** One earns attention; three in a page reads as manufactured
 enthusiasm. Cut all but the one that's actually doing work, if any.
 
+**Read it aloud.** Before finalizing this pass, read the passage as if speaking it out loud
+(silently is fine — the point is hearing it, not the volume). Mark every place you'd stumble,
+run out of breath mid-sentence, or want to add a beat that isn't there — a sentence that's
+technically correct but doesn't sound like something a person would actually say. This is the
+single most reliable check for rhythm problems the mechanical rules above can miss, and it's
+close to universal across every credible editing process, AI-assisted or not. Run it as a last
+check on the whole passage, not sentence by sentence — rhythm problems compound across
+sentences and often aren't audible from inside just one of them.
+
 ### Vocabulary
 
 **Banned filler — cut on sight:**
@@ -407,8 +429,15 @@ enthusiasm. Cut all but the one that's actually doing work, if any.
 - robust → strong · comprehensive → thorough · seamless → smooth · meticulous → careful
 - testament to → shows · underscores → highlights · pivotal → key · foster → build, support
 - navigate (metaphor) → work through · landscape (metaphor) → field, space · realm → area
-- delve, embark, beacon, tapestry, paradigm, watershed → rewrite entirely
+- intricate → detailed, complex · enhance → improve · crucial → key, necessary · harness → use, tap
+- notably → cut · showcase, showcasing → show, display · vibrant → cut, or name the specific quality
+- delve, embark, beacon, tapestry, paradigm, watershed, multifaceted → rewrite entirely
 - "at the end of the day," "it's worth noting," "needless to say" → cut
+
+This list drifts as models shift — GPT-4-era tells (delve, tapestry) gave way to GPT-4o's
+"fostering" and "showcasing," and the next shift won't match either list exactly. Treat it as
+living, not fixed: when a word keeps showing up in drafts and reads as off regardless of
+whether it's written down here, add it.
 
 **Hollow compound phrases — cut or make specific.** Multi-word stock phrases that sound like
 strategy but say nothing: "durable competitive advantage," "sustainable growth trajectory,"
@@ -547,7 +576,7 @@ Consistency check (see above) on this pass too.
 
 **P1 — fix before publishing:**
 - Grounding-rule strong flags that survived edit: unmeasured quantitative flourish, smuggled
-  domain metaphor
+  domain metaphor, studied neutrality
 - Throat-clearing openers and section pivots
 - AI connective tissue ("Which means...," "That's why...," "turns out to be")
 - False callbacks
