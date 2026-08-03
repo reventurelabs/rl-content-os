@@ -125,8 +125,15 @@ Adaptive, based on who the expertise belongs to:
   things you wouldn't have thought to ask about, and explicitly ask them to
   quantify or define anything they state in vague or abstract terms. Record
   what they say rather than paraphrasing from memory.
+- **A voice memo, dictated stream-of-consciousness, or existing meeting
+  transcript** (e.g. a Granola recording) is a valid interview answer in its
+  own right — often lower-friction and more specific than typed answers,
+  since talking through an idea surfaces the real example or the actual
+  number faster than composing it in writing. If one already exists for this
+  topic, use it directly as raw material instead of asking the person to
+  re-type answers to questions it already answers.
 
-Either way, this step's output is raw material — quotes, numbers, opinions,
+In every case, this step's output is raw material — quotes, numbers, opinions,
 examples — not prose. That material is what step 5 draws on instead of
 inventing connective filler.
 
@@ -186,7 +193,7 @@ pass only on explicit signal.
 
 ### 6. Review the draft against the brief
 
-Two distinct passes, not one vague "review." A single self-review from the
+Three distinct passes, not one vague "review." A single self-review from the
 same context that just drafted the piece is the weakest possible judge of it —
 it's blind to exactly the generic phrasing and shape problems it just wrote.
 
@@ -205,13 +212,31 @@ reads like AI wrote it. It must return specific, named objections tied to a
 location in the draft — "consider tightening the middle" doesn't count as a
 finding.
 
-Only named, specific objections from either pass become revision targets.
+**Fact-check pass (verify against sources).** Independent of both passes above —
+this one checks accuracy, not shape or argument. List every checkable claim in
+the draft: a stat, date, name, quote, or attributed study. Verify each against
+an independent source (web search/fetch tools, if available in the current
+session). `rl-writing-craft`'s Grounding Rules already stop the model from
+*inventing* a claim; this catches the different failure of a claim that's real
+but wrong — a source misremembering a percentage, a stat quoted from a
+secondary write-up that misstated the original. Where a claim checks out, move
+on. Where it's wrong, note the correct figure. Where it can't be verified
+either way, flag it for the writer rather than publishing it unchecked or
+quietly cutting it — the writer may have a source the search didn't surface.
+If no search/fetch capability is available in the session, say so and flag
+every checkable claim for the writer's own verification instead of skipping
+the pass silently.
+
+Only named, specific objections from any of the three passes become revision
+targets.
 
 **Re-check (after step 7).** After step 7's revision, re-run the adversarial
 pass once more against the revised draft to confirm the fix actually landed
 rather than trusting that it did — a revision can fix the flagged issue while
 introducing a new one, and the only way to know is to check again with the
-same blind rigor.
+same blind rigor. Re-verify the fact-check pass too, but only for claims the
+revision actually touched or added — re-running it against unchanged claims is
+wasted work.
 
 Reserve the full multi-agent adversarial-verification pattern (several
 independent skeptics voting) for higher-stakes review work — one blind pass is
