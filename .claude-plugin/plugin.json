@@ -3,7 +3,7 @@
   "name": "rl-content-os",
   "displayName": "Reventure Labs Content OS",
   "description": "A skill suite for structured long-form and high-stakes writing, evidence-grounded topic scouting, and guided voice/context discovery in Claude Code. Bring your own closing-polish skill — none is bundled.",
-  "version": "0.21.0",
+  "version": "0.21.1",
   "author": {
     "name": "Sean Schroeder",
     "url": "https://github.com/reventurelabs"

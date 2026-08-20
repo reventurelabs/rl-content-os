@@ -6,6 +6,20 @@ This project follows [Semantic Versioning](https://semver.org/). The `version`
 field in `.claude-plugin/plugin.json` pins installs — it is bumped on every
 release, or users keep their cached copy.
 
+## 0.21.1 — 2026-08-20
+
+### Added
+
+- `scripts/assemble-writing-craft.py` and `skills/rl-writing-craft/VENDORING.md`.
+  The v0.21.0 split made `SKILL.md` a navigation file, which silently broke the recipe
+  downstream consumers use to vendor this skill as a single blob — following the
+  documented path now yields a skill with no rules in it. The script reassembles the
+  five files into the canonical single document (verified byte-identical to the
+  pre-split original); `VENDORING.md` records the recipe, the four adaptations
+  StoryCycle's `sc.writing-craft` re-applies, and a `git fetch` step, because the
+  Aug 18 vendor was taken from a checkout behind `origin/main` and shipped without
+  the studied-neutrality rule, the read-it-aloud check, or the refreshed vocabulary.
+
 ## 0.21.0 — 2026-08-20
 
 Brings the plugin in line with current Claude Code plugin and Agent Skills
