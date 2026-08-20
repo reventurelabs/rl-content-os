@@ -17,6 +17,7 @@ description: >-
   the guided version of the "ask once, persist the answer" fallback
   `rl-topic-scout` already has — a one-time (or occasional refresh)
   discovery process, not a per-draft tool.
+license: MIT
 ---
 
 # Context Discovery

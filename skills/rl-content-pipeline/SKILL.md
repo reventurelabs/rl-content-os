@@ -16,6 +16,7 @@ description: >-
   "essay," "long-form," "this needs to be right." For low-stakes quick-turn
   formats (routine LinkedIn post, email, social copy) use content-generation
   or author-voice directly.
+license: MIT
 ---
 
 # Content Pipeline — Structured 10-Step Writing Process

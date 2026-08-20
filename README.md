@@ -58,13 +58,19 @@ it.
 |---|---|
 | `rl-content-pipeline` | Structured 10-step process for long-form content — blog posts, whitepapers, essays, case studies — or high-stakes content regardless of length: a short statement going out under the company's name, an announcement with no room to walk back a bad framing. Define, interview, brief, outline, draft, critique, revise, run the writing suite, refine, approve. Nothing ships until you explicitly say so. |
 | `rl-topic-scout` | Scans a repo's git history, README/CLAUDE.md, and structural changes — or Slack threads, meeting transcripts, and sent email, where connected — to surface 3-5 grounded topic candidates — each with evidence, an angle, and a "why now." Ranks candidates against the context file (`AUTHOR-CONTEXT.md`), and tags client/work-for-hire sources `[CLIENT WORK — confidential source]` rather than silently including or excluding them. Hands the pick straight into the content pipeline. |
-| `rl-writing-craft` | Self-contained writing-quality skill: structure (architecture, flow, opens, closes), edit (line-level cutting, grounding, rhythm, anti-AI removal), audit (dedicated anti-AI pattern sweep), and copyedit (grammar, punctuation, usage, consistency, proofreading). General craft for any writer; layers under whatever author-voice skill you bring, which wins on register and rhythm. Works standalone too — it just won't impose a specific voice. |
+| `rl-writing-craft` | Self-contained writing-quality skill: structure (architecture, flow, opens, closes), edit (line-level cutting, grounding, rhythm, anti-AI removal), audit (dedicated anti-AI pattern sweep), and copyedit (grammar, punctuation, usage, consistency, proofreading). General craft for any writer; layers under whatever author-voice skill you bring, which wins on register and rhythm. Works standalone too — it just won't impose a specific voice. Each function's full rules live in its own file (`structure.md`, `edit.md`, `audit.md`, `copyedit.md`) so only the pass you're running loads. |
 | `rl-voice-discovery` | Builds `VOICE-PROFILE.md` from real writing samples (or a structured interview if none exist), validated against a test passage. A one-time discovery process, not a per-draft tool — `rl-content-pipeline` and `rl-writing-craft` already check for the resulting file wherever they reference "your author-voice skill." |
 | `rl-context-discovery` | Builds or refreshes `AUTHOR-CONTEXT.md` — checks existing evidence (about page, published content, README/CLAUDE.md) first, then a guided interview specifically designed to get past generic first answers, validated against a hypothetical ranked topic shortlist. The guided version of the "ask once" fallback `rl-topic-scout` already has. |
 | `/pipeline` | Deterministic entry point for the 10-step content pipeline — deterministic meaning typing the slash command always invokes this exact skill, rather than relying on Claude to infer the right skill from your request. |
 | `/scout` | Deterministic entry point for repo topic scouting, handing its pick straight into `/pipeline`. |
 | `/voice` | Deterministic entry point for building your voice profile. |
 | `/context` | Deterministic entry point for building or refreshing `AUTHOR-CONTEXT.md`. |
+
+The four slash entry points are themselves skills — thin dispatchers that do
+nothing but invoke the matching skill. They're marked so that only you can
+trigger them: Claude never picks a dispatcher on its own, it reaches for the
+real skill. That keeps one description per capability competing for Claude's
+attention instead of two.
 
 A `/scout` shortlist looks like this (illustrative — repos, commits, and
 topics are all fictional):
@@ -107,18 +113,37 @@ the start.
 
 ## Install
 
-Three ways to get the skills active in Claude Code. They install the same
-files; pick whichever fits your workflow. **None of them install the
-commands** (`/pipeline`, `/scout`, `/voice`, `/context`) — those need the
-symlink or plugin-marketplace path regardless of how you get the skills
-themselves, since command activation works differently from skill
-activation. See step 2 below either way.
+Everything in this suite is a Claude Code skill — including the four slash
+entry points, which are dispatcher skills rather than separate command files.
+Every path below installs the same nine skills; pick whichever fits your
+workflow.
 
-### Option A — CLI (fastest for just the skills)
+### Option A — Plugin marketplace (recommended)
 
-This repo's `skills/rl-*/SKILL.md` files already match the flat layout the
-[`skills` CLI](https://github.com/vercel-labs/skills) auto-discovers, so no
-special setup is needed on this end:
+```bash
+claude plugin marketplace add reventurelabs/rl-content-os
+```
+
+```bash
+claude plugin install rl-content-os@reventure-labs
+```
+
+No clone needed — the first command reads the marketplace straight from
+GitHub. Both are also available inside Claude Code as `/plugin marketplace
+add` and `/plugin install`. Pull future updates with `claude plugin
+marketplace update reventure-labs` followed by `claude plugin update
+rl-content-os@reventure-labs`.
+
+To confirm what you got:
+
+```bash
+claude plugin details rl-content-os@reventure-labs
+```
+
+### Option B — CLI (skills only, no plugin namespace)
+
+This repo's `skills/*/SKILL.md` files match the layout the
+[`skills` CLI](https://github.com/vercel-labs/skills) auto-discovers:
 
 ```bash
 npx skills add reventurelabs/rl-content-os --skill '*' -a claude-code
@@ -127,20 +152,11 @@ npx skills add reventurelabs/rl-content-os --skill '*' -a claude-code
 Or install one at a time: `npx skills add reventurelabs/rl-content-os --skill rl-content-pipeline -a claude-code`.
 Use `--list` first to see what's available without installing anything.
 
-**One caveat:** this only installs `SKILL.md` files, not the
-`commands/` directory — you'll still want step 2 below for `/pipeline`
-etc.
-
-### Option B — Plugin marketplace (recommended once you want ongoing updates)
-
-```bash
-git clone https://github.com/reventurelabs/rl-content-os.git
-```
-
-Add the cloned repo as a local plugin marketplace source in Claude Code,
-then install the `rl-content-os` plugin from it. This is the one
-path that installs skills *and* commands together, and `git pull` picks up
-future updates automatically.
+The five content skills (`rl-*`) stay on the [Agent
+Skills](https://agentskills.io) spec's frontmatter fields, so they also
+package cleanly for claude.ai and the Skills API. The four dispatchers use
+Claude Code-only fields (`argument-hint`, `disable-model-invocation`) and are
+Claude Code-only by design.
 
 ### Option C — Manual symlinks (best if you want to edit skills in place)
 
@@ -148,20 +164,16 @@ future updates automatically.
 git clone https://github.com/reventurelabs/rl-content-os.git
 cd rl-content-os
 
-ln -s "$PWD/skills/rl-content-pipeline" ~/.claude/skills/rl-content-pipeline
-ln -s "$PWD/skills/rl-topic-scout" ~/.claude/skills/rl-topic-scout
-ln -s "$PWD/skills/rl-writing-craft"    ~/.claude/skills/rl-writing-craft
-ln -s "$PWD/skills/rl-voice-discovery"  ~/.claude/skills/rl-voice-discovery
-ln -s "$PWD/skills/rl-context-discovery" ~/.claude/skills/rl-context-discovery
-ln -s "$PWD/commands/pipeline.md"       ~/.claude/commands/pipeline.md
-ln -s "$PWD/commands/scout.md"          ~/.claude/commands/scout.md
-ln -s "$PWD/commands/voice.md"          ~/.claude/commands/voice.md
-ln -s "$PWD/commands/context.md"        ~/.claude/commands/context.md
+for s in rl-content-pipeline rl-topic-scout rl-writing-craft \
+         rl-voice-discovery rl-context-discovery \
+         pipeline scout voice context; do
+  ln -s "$PWD/skills/$s" ~/.claude/skills/"$s"
+done
 ```
 
 Edits to the repo are live immediately — no reinstall step.
 
-### After installing, either way
+### After installing, whichever path you took
 
 **1. Fill in your context.** Run `/context` for a guided interview (checks
 existing evidence first, then asks with technique designed to get past

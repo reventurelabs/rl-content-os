@@ -15,6 +15,7 @@ description: >-
   "scout topics from this repo," "review my recent work for blog ideas," or
   "/scout." Designed to also run unattended on a schedule (given a repo path
   and a lookback window) to produce a periodic topic digest — see Notes.
+license: MIT
 ---
 
 # Topic Scout

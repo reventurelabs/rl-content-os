@@ -16,6 +16,7 @@ description: >-
   skills read it directly. Does not replace a fuller, continuously-evolving
   voice skill built from ongoing corrections — this produces the seed, not
   the finished thing.
+license: MIT
 ---
 
 # Voice Discovery

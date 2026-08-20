@@ -1,0 +1,10 @@
+# macOS
+.DS_Store
+__MACOSX/
+
+# Packaged skill/plugin archives — build output, not source.
+# Rebuild on demand; never commit (they go stale against skills/*/SKILL.md).
+*.zip
+
+# Local Claude Code settings
+.claude/settings.local.json
