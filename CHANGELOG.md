@@ -6,6 +6,15 @@ This project follows [Semantic Versioning](https://semver.org/). The `version`
 field in `.claude-plugin/plugin.json` pins installs — it is bumped on every
 release, or users keep their cached copy.
 
+## 0.21.2 — 2026-08-20
+
+### Fixed
+
+- `VENDORING.md` adaptation 4 spelled the Story Cycle skills as a `sc.story-cycle-*`
+  glob, which StoryCycle's `validate-skill-references` reads as a dangling slug. Names
+  `sc.story-cycle-framework` and `sc.story-cycle-storyboard` individually, so the next
+  re-vendor doesn't reintroduce the warning.
+
 ## 0.21.1 — 2026-08-20
 
 ### Added

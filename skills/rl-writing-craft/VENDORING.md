@@ -42,7 +42,9 @@ vendored verbatim.
 4. **Closing sourcing note** — the generic "a skill like `ann-handley-voice`" pointer becomes
    the estate's own: `sc.park-howell-voice` for StoryCycle and Park-methodology work,
    `sc.sean-schroeder-voice` for Sean's own writing, with ABT and Story Cycle element rules
-   in `sc.abt-construction` / `sc.story-cycle-*` outranking anything here.
+   in `sc.abt-construction`, `sc.story-cycle-framework` and `sc.story-cycle-storyboard`
+   outranking anything here. Name those slugs individually — a `sc.story-cycle-*` glob reads
+   as a dangling slug to StoryCycle's `validate-skill-references`.
 
 ## Before you vendor
 
