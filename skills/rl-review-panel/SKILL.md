@@ -168,14 +168,24 @@ Every finding uses this format:
 [DIRECTION] a question for the writer, or a direction for the fix — never a rewrite
 ```
 
-Severity follows `audit.md`: HARD STOP = P0, STRONG FLAG = P1, MINOR = P2. Rules without a tier:
-Logical Consistency errors are P0 (`SKILL.md` calls them blocking); `structure.md` checks — stakes,
-titles, opening, flow, close, narrative — are P1 unless the finding is minor, then P2. A reader
-finding takes the severity of the nearest rule, or P1 if the reader stops following the piece, P2
-otherwise.
+**Severity.** LLM critics asked to find problems over-find them and inflate severity (see
+`docs/research/2026-09-28-llm-review-panel-evidence.md`), so the scale is anchored and P0 is narrow.
 
-**At most six findings per lens,** most severe first. If the draft is clean for a lens, the lens
-says so in one line. Never invent findings to look thorough.
+| Severity | Means | Only when | Anchor example |
+|---|---|---|---|
+| **P0** — blocks publishing | The reader would come away believing something false, or be persuaded by a manipulative frame | The finding cites a HARD STOP rule, **or** it shows the passage leaves the reader with a false belief about the subject | "Most teams report 40% faster onboarding" with no source (Population quantifiers); a deadline that doesn't exist (Manufactured urgency); the page says the suite has five skills when it ships six |
+| **P1** — fix before publishing | The reader stumbles, loses the thread, or trusts the piece less; the piece works worse than it should | STRONG FLAG rules, `structure.md` checks (stakes, titles, opening, flow, close, narrative), and Logical Consistency errors that confuse without misleading | "That problem" pointing back to a problem never named; the same point made in three sections; an undefined acronym |
+| **P2** — fix when time allows | A real but small cost | MINOR rules; anything a reader would notice only on a second read | Condescending "simply"; a buried verb |
+
+Logical Consistency errors are P1 by default — they still block publishing, but a dangling
+antecedent is not a false claim. They rise to P0 only when the error leaves the reader believing
+something false (a recap that silently drops the case the piece is about, a causal chain that swaps
+its terms). A reader finding takes the severity of the nearest rule, or P1 if the reader stops
+following the piece, P2 otherwise. **When in doubt between two levels, take the lower.** A P0 needs
+its reason stated in the `[FINDING]` line: which HARD STOP, or what false belief.
+
+**At most six findings per lens,** most severe first. "Clean for this lens" is a complete and
+often correct answer — say it in one line. Never invent findings to look thorough.
 
 **Ask, never supply.** When a fix needs something only the writer has — a source, an example, the
 missing step, the real stakes — the direction is a question. A lens that invents the missing
@@ -188,8 +198,23 @@ detail commits the Grounding Rules violation it exists to catch.
 **Default: blind and parallel.** Each seated lens runs as its own fresh sub-agent, all at once.
 Each receives the draft, the Keeper's opening statement, `AUTHOR-CONTEXT.md`, and the voice
 profile — not the other lenses' findings, not the brief's history, not the drafting conversation.
-Independence is the point: when two lenses that couldn't see each other flag the same passage,
-that agreement is the strongest signal the panel produces.
+Independence is the point: no lens sees another's work, and lenses never debate — debate makes
+models abandon correct findings to agree, and plain aggregation captures most of what it adds.
+
+**Model family.** Where the platform lets you choose, run the lenses, the verifier, and the Keeper
+on a different model family from the one that drafted the piece: judges rate their own family's
+writing higher. A different family does not remove the wider bias toward smooth, predictable text,
+so the Keeper still never ranks a finding up because its fix would read more smoothly. When every
+agent is the drafter's family — sub-agents in Claude Code are Claude — say so in the output
+("same-family review").
+
+**Verify before the writer sees it.** After the lenses report and before the Keeper consolidates,
+one more fresh agent — the verifier — takes every P0 and P1 finding and re-reads the draft at the
+quoted location. For each: **confirmed** (the problem is there as described), **downgraded** (real
+but at a lower severity — say which), or **rejected** (the quote doesn't show it, the rule doesn't
+apply, or the finding breaks a lens's *must not*). The verifier sees the findings and the draft,
+not the lenses' reasoning, and applies the severity table above. Rejected findings are dropped and
+counted in one line; downgraded ones take the new severity. Skip the verifier only under `--light`.
 
 **`--light`:** one fresh agent (never the drafting context) runs every seated lens in turn,
 reporting each in its own section. Cheaper and less independent; use it when sub-agents aren't
@@ -206,8 +231,10 @@ The writer reads this, not the raw lens reports. Forty findings is an audit; ten
 1. **Merge duplicates.** Same passage, same problem, different lenses → one item, listing every
    lens that raised it.
 2. **Drop** taste findings (see Findings) and anything that violates a lens's *must not*.
-3. **Rank:** every P0 first; then items raised by more than one lens; then the remaining P1s; then
-   P2s.
+3. **Rank:** every confirmed P0 first; then confirmed P1s; then P2s. Within a level, an item raised
+   by lenses on **different model families** ranks first. Agreement between lenses on the same
+   model is noted ("raised by Architect and Stranger") but not ranked up: models share blind spots,
+   so same-model agreement is weaker evidence than it looks.
 4. **Present:**
    - **Blockers** — every P0, in full.
    - **Top items** — up to ten more, in full, in rank order.
@@ -215,6 +242,9 @@ The writer reads this, not the raw lens reports. Forty findings is an audit; ten
    - **Forks** — conflicts the precedence below can't settle, as both findings plus the Keeper's
      recommendation. The writer decides.
    - **Clean lenses** — one line naming them.
+   - **Verification** — one line: how many findings were confirmed, downgraded, and rejected.
+   - **Review family** — one line: which model family ran the panel, and "same-family review" if
+     it matches the drafter's.
 
 ### When lenses conflict
 
@@ -236,17 +266,36 @@ Precedence, highest first:
 3. **Deliberate or default?** Flag unchosen habits, not choices. Short sentences aren't a flaw in a
    writer whose profile says short sentences; a pile-up past that writer's own norm might be.
 4. **Voice check after the last rewrite.** Once revision and the writing suite are done (pipeline
-   step 9; standalone, after the writer's revision), the Keeper reads every changed passage against
-   the voice profile — its Distinctive Elements, Critical Voice Guidelines, and Corrections, plus
-   the writer's own samples if they're at hand — and asks one question: does this still read like
-   the author, or like competent neutral prose? Name any passage that drifted. With no voice
-   reference at all, skip the check and say so. Two limits:
+   step 9; standalone, after the writer's revision), the Keeper checks voice two ways, because an
+   LLM reading for voice shares the bias toward smooth, generic text that flattens it:
+   - **Measured.** Run `voice_metrics.py` (in the `rl-voice-discovery` skill folder) on the draft
+     before revision and after, against the `VOICE-PROFILE.md` Measured Baseline or the writer's
+     samples: `python3 voice_metrics.py --baseline VOICE-PROFILE.md before.md after.md`. Name every
+     metric where the revision moved *away* from the writer's baseline — shorter sentence spread,
+     lost contractions, vanished dashes, flattened hedging. A move away is a question for the writer,
+     not a verdict: a revision can drift for a good reason (cutting a filler word the writer
+     overuses). If the script or a baseline isn't available, say so and rely on the read.
+   - **Read.** Every changed passage against the profile — its Distinctive Elements, Critical Voice
+     Guidelines, and Corrections, plus the writer's own samples if they're at hand: does this still
+     read like the author, or like competent neutral prose?
+   Name any passage that drifted. With no voice reference at all, skip the check and say so. Two
+   limits:
    - **Never undo a HARD STOP fix** to restore voice. Flag the passage for the author-voice layer
      to re-voice the corrected text instead.
    - **Never add voice markers to pass the check.** Inserting a signature phrase into a section
      that lost its voice is manufactured personality, which `rl-writing-craft` forbids. The fix is
      to re-voice what's there, in the author-voice layer.
 5. **No proxy voice.** No lens uses one writer's preferences as the standard for another's work.
+
+---
+
+## Revision limits
+
+The writer accepts or rejects every change a panel finding leads to — changes are presented as a
+list, each tied to its finding, not folded silently into a new draft. And the loop is short: **one
+revision, one re-check, then stop.** Critique-and-revise gains come in the first round or two;
+further rounds drift toward generic prose. A P0 still open after the re-check goes to the writer as
+a fork; the panel does not run again on its own.
 
 ---
 
