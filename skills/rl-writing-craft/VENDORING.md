@@ -62,10 +62,10 @@ git fetch origin && git status -sb   # confirm you are not behind before assembl
 
 v0.22.0 added the rules `rl-review-panel` cites — Reader Access, Persuasion Integrity,
 Stakes, Titles, Narrative Pieces — plus two `edit`-pass rules, stress position and buried
-action, and the assembled
-document grew by about 1,300 words. A consumer that holds its vendored copy to a size
-ceiling (StoryCycle's `sc.writing-craft` is baselined at net ≤0) has to decide what to
-take before re-vendoring; the assembly script does not trim. For StoryCycle, two notes:
+action, and the assembled document grew by about 1,300 words. Size is a guideline, not
+a hard limit: when re-vendoring, weigh the added length against what the rules buy, and
+trim where a rule is redundant downstream — not because a number was crossed. The
+assembly script does not trim. For StoryCycle, two notes:
 
 - The panel is content-only, so the new rules matter where content is reviewed.
 - Narrative Pieces overlaps `sc.abt-construction`, `sc.story-cycle-framework` and

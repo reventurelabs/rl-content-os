@@ -49,10 +49,9 @@ release, or users keep their cached copy.
 
 ### Downstream
 
-- The assembled `rl-writing-craft` grows by about 1,300 words (7,365 → 8,669). A
-  consumer with a size ceiling on its vendored copy — StoryCycle's `sc.writing-craft`
-  is held at net ≤0 — should decide what to take before re-vendoring; see
-  `VENDORING.md`.
+- The assembled `rl-writing-craft` grows by about 1,300 words (7,365 → 8,669). Size
+  is a guideline, not a hard limit: a consumer re-vendoring it should weigh the added
+  length against what the rules buy, not refuse them on size alone. See `VENDORING.md`.
 
 ## 0.21.2 — 2026-08-20
 
