@@ -17,7 +17,7 @@ true or earned. The fix is always the same: cut to what's real — either a spec
 account or a claim carried by a named source. The vague middle — plausible-sounding material
 that asserts without grounding — never survives. Flag every instance.
 
-Eight rules, two severities. The first five are HARD STOPS — P0 in the audit's severity tiers,
+Nine rules, two severities. The first six are HARD STOPS — P0 in the audit's severity tiers,
 fixed before anything else. The last three are STRONG FLAGS — P1, fixed before publishing.
 
 **Population quantifiers — HARD STOP.** Any claim that quantifies a population or a span into
@@ -125,7 +125,10 @@ Check each backward reference against the text.
 **AI connective tissue.** Transitions that announce a connection instead of making it: "Which
 means..." leading a conclusion, "That's why..." restating what was just proven, "This is the
 key insight:" before the insight, "It's worth noting that," soft reveals like "turns out to
-be" that dramatize a connection the reader can already see.
+be" that dramatize a connection the reader can already see. The boundary: this rule cuts a
+connective that *announces* a link the text already makes. When the link is *missing* — two
+claims side by side that the reader must join themselves — that is Skipped step (Reader Access),
+and the fix is to supply the connection, not to cut more.
 
 **False antithesis ("not X, but Y").** The "not X, but Y" construction is an AI staple — it
 manufactures a pivot that sounds insightful but often isn't. Only use it when X is something
@@ -161,6 +164,15 @@ paragraph that's wandered to eight dense sentences before its first break usuall
 gain — "the decision was made" instead of who made it. Default to active; flag passive used as
 a default habit rather than a deliberate choice (procedural steps with no relevant actor,
 emphasis on the object over the doer are legitimate reasons to keep it passive).
+
+**End on the new information.** Readers weight what lands at the end of a sentence — the stress
+position. Put the familiar, linking material at the start and the new or important material at
+the end. The tell: a sentence whose last words are a qualifier, a date, or a citation while the
+point sits buried mid-sentence. Test: in a key paragraph, find the sentences that carry its claim
+and read only their last three or four words — do they carry the argument? Reorder those so they
+do. Apply it to the claim-carrying sentences, not every sentence: a paragraph where every sentence
+ends on the same kind of beat is Matched-cadence repetition. A deliberate cadence in the voice
+profile outranks this.
 
 **Exclamation points — restraint.** One earns attention; three in a page reads as manufactured
 enthusiasm. Cut all but the one that's actually doing work, if any.
@@ -253,6 +265,13 @@ repeat it. Forced variation reads as thesaurus abuse.
 "features," "boasts," "represents." Use "is" or "has" unless a specific verb genuinely adds
 meaning.
 
+**Buried action.** An action turned into a noun — "we made a decision," "the implementation of
+the change," "provide an explanation" — hides the verb and usually the actor with it. Test: ask
+who is doing what; if the answer's actor isn't the sentence's subject and its action isn't the
+verb, rewrite so they are ("we decided," "they changed it," "explain"). A nominalization that
+names something the previous sentence introduced ("This decision...") is doing cohesion work
+and stays.
+
 ### Lists and Structured Content
 
 **Convert parallel lists to prose where possible.** In long-form, a bulleted list of parallel
@@ -303,12 +322,75 @@ governs ordering *within* the opening scene — name the domain in the first con
 cold-open rule governs *where* the piece starts. They compose, not conflict: open cold, and
 let that first concrete detail carry its own frame.
 
+### Reader Access
+
+The reader is a smart stranger: capable, willing, and absent from the writer's head. These rules
+catch the places the writer forgot that. Read `AUTHOR-CONTEXT.md` first — a term the defined
+reader already uses is not a violation, and explaining it to them is.
+
+**Unintroduced reference — STRONG FLAG.** A person, organization, tool, study, or framework
+named without identifying context at first mention. Test: read the sentence as a smart reader
+from outside the field — do you know who or what this is from the sentence alone? Fix: a short
+identifying clause at first mention. Skip it only when the defined reader already knows.
+
+**Undefined insider term — STRONG FLAG.** A term of art or acronym the defined reader wouldn't
+say out loud, left undefined at first use. Test: mark every such term; each is defined on first
+use, replaced with plain language, or cut. Never define the same term twice. Naming one concept
+several ways ("brand brain," "captured intelligence," "the foundation") is this failure too —
+the reader can't tell whether they are one thing; pick one name.
+
+**Skipped step — STRONG FLAG.** A conclusion whose premise lives in the writer's head, not on
+the page. Test: for every "so," "therefore," "which is why," or implied conclusion, point to the
+sentence that supplies the premise; for two claims set side by side, say how they connect. If
+you can't point to it, a step is missing. Fix: add the step, or ask the writer for it. Never
+invent it.
+
+**Condescension — MINOR (P2).** Explaining what the defined reader already knows, or signaling
+that something should be easy. Test: would the reader in `AUTHOR-CONTEXT.md` already know this?
+Flag "simply," "obviously," "of course," "as everyone knows," "it's easy to." Fix: cut the
+explanation or the signal word.
+
+### Persuasion Integrity
+
+Honest persuasion is not a violation: hooks, a CTA in a conversion format, a strong opinion,
+real emotional stakes. These rules catch persuasion that works by misleading the reader or
+exploiting them. Truth of a claim is the Grounding Rules' job; these judge the fairness of the
+method.
+
+**Manufactured urgency — HARD STOP.** Deadlines, scarcity, or "before it's too late" framing not
+tied to a real, checkable constraint. Test: what specifically happens if the reader waits a
+month? If the answer isn't specific and true, the urgency is manufactured. Fix: state the real
+constraint, or cut the urgency.
+
+**Disproportionate fear — HARD STOP.** A risk framed as larger, likelier, or more personal than
+the evidence supports — the fear-appeal sibling of Causal-superlative overclaim. Test: write down
+the probability and consequence the source actually supports; does the framing exceed it? Fix:
+shrink the framing to what the evidence carries.
+
+**Bait framing — STRONG FLAG.** A title, subject line, or hook that promises something the body
+doesn't deliver. Test: write the promise as one sentence, then point to the paragraph that pays
+it off. No paragraph, no payoff. Fix: deliver the promise, or change the hook to match.
+
+**Unverifiable social proof — STRONG FLAG.** "Thousands trust," "leaders are switching," "join
+the teams who" — or figures a disclaimer admits are unverified — doing persuasive work without a
+checkable number or named example. The social form of Unearned capability claim. Test: could
+you cite the number or name the example if a reader asked? A disclaimer beside a precise figure
+doesn't pass; the precision still persuades. Fix: the real figure or named example, or cut.
+Where the claim is about the product's own quality ("trusted because it's the most reliable"),
+Unearned capability claim governs and it is a HARD STOP.
+
+**Insecurity lever — STRONG FLAG.** Persuasion that works by making the reader feel deficient:
+"you're falling behind," "most people get this wrong and so do you," a history of failure
+assigned to the reader. Test: would the argument still work if the reader were already
+competent? If it only works by making them feel inadequate, it's a lever, not an argument. Fix:
+rebuild around what the reader gains, not what they lack.
+
 ### Editorial Output
 
 When running `edit`, return the edited text with changes applied, a list of what changed and
 why (grouped by type), and any flags that need the writer's ruling — grounding-rule violations
-(a missing personal anchor, an unverifiable claim, a real-person attribution) and verdict
-adjectives with no real fact behind them alike. Never fabricate to fill a flagged gap — surface
+(a missing personal anchor, an unverifiable claim, a real-person attribution), Persuasion
+Integrity hard stops, skipped steps, and verdict adjectives with no real fact behind them alike. Never fabricate to fill a flagged gap — surface
 it.
 
 ---

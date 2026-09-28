@@ -3,6 +3,27 @@
 Architectural editing. The order, the shape, the joints. What goes where and why.
 Run the Logical Consistency check (see `SKILL.md` → “Logical Consistency — Grave Errors”) on this pass too.
 
+### Stakes
+
+Before the opening, the reason. Complete this sentence using only what's on the page: "This
+matters to [the reader in `AUTHOR-CONTEXT.md`] because ___." If the blank can't be filled from
+the text, the piece has no stated stakes. Stakes don't have to be dramatic — they have to be
+real, and they have to belong to the reader, not the writer. Fix: surface them within the
+opening's first moves — carried by the cold open or the declared verdict, not added as a preamble
+before it — or ask the writer what they are. Never supply stakes the material doesn't support.
+
+### Titles
+
+A title is a structural promise; the body has to keep it.
+
+**Title promise.** Does the title say what the piece argues or delivers? Could it head a
+different piece on the same topic? If yes, it's a topic label — acceptable for reference
+content, flagged for argument formats. A title that promises what the body doesn't pay is Bait
+framing (the `edit` function's Persuasion Integrity rules).
+
+**Clear over clever.** Remove the wordplay. Does the title still say something? If it only
+works as a pun or a reference, flag it.
+
 ### Opening
 
 The opening earns the read or loses it. Two patterns work:
@@ -83,6 +104,32 @@ deleted without losing anything, it's the wrong close — find the real one, usu
 just before the summary. On CTAs: conversion formats (landing page, email) end on a CTA by
 design; the ban is on argument formats (essay, blog post), where a CTA is bolted on.
 
+### Narrative Pieces (conditional)
+
+Load for case studies, customer and brand stories, founder narratives, memoir, and fiction. Skip
+for argument, reference, and conversion formats — don't push a non-narrative piece into story
+form. Grounding Rules apply throughout: never invent scene detail or interiority to satisfy a
+check below; ask the writer.
+
+**Want and obstacle.** From the text alone, name who wants what and what stands in the way. If
+you can't, the piece is a sequence of events, not a story.
+
+**Scene where it counts.** Find the moment the piece turns on. Is it shown — a specific time,
+place, and action — or summarized? The turning moment gets a scene; connective material gets
+summary. If the scene needs detail the writer hasn't supplied, ask.
+
+**Point of view.** Whose eyes are we looking through in each section? Flag any shift that isn't
+deliberate and signaled.
+
+**Payoff.** What does the opening set up? Point to where the ending answers it.
+
+**Protagonist check (brand and customer stories).** Who changes in this story? If the answer is
+the brand or product rather than the customer, flag it.
+
+**Stated emotion.** Where a character's emotion is named, does the action already show it? If
+yes, cut the naming. If the emotion belongs to a real person who never stated it, it's Invented
+interiority (Grounding Rules).
+
 ### Format Defaults
 
 The opening/flow/close principles above are universal. These are the concrete parameters for
@@ -118,7 +165,8 @@ voice instead — the author-voice skill layered on top wins here, not this sect
 
 ### Structural Output
 
-When running `structure`, return: what the opening is doing and whether it earns the read;
+When running `structure`, return: whether the stakes are on the page and the title keeps its
+promise; what the opening is doing and whether it earns the read;
 where the flow stalls, treadmills, or restates; whether any sections are reshuffleable modules;
 and whether the close does real work. Propose specific cuts and reorderings. Don't rewrite
 lines — that's the `edit` function.
