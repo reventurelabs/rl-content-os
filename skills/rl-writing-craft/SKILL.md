@@ -123,8 +123,8 @@ set does not have to be in context at once.
 
 | Function | File | What it covers |
 |---|---|---|
-| `structure` | [structure.md](structure.md) | Opening, flow and section logic, the close, format defaults, output shape |
-| `edit` | [edit.md](edit.md) | Cutting, Grounding Rules, throat-clearing, rhythm, vocabulary, lists, audience calibration |
+| `structure` | [structure.md](structure.md) | Stakes, titles, opening, flow and section logic, the close, narrative pieces, format defaults, output shape |
+| `edit` | [edit.md](edit.md) | Cutting, Grounding Rules, throat-clearing, rhythm, vocabulary, lists, audience calibration, Reader Access, Persuasion Integrity |
 | `audit` | [audit.md](audit.md) | Severity tiers, the two-pass method, output shape |
 | `copyedit` | [copyedit.md](copyedit.md) | Grammar, punctuation, usage, consistency, proofreading, and what it never does |
 

@@ -27,6 +27,7 @@ the skills that already have them:
 
 - **your content-generation skill** / **your author-voice skill, if you have one** — generation, voice. "Your author-voice skill" resolves to an actual installed skill if you have one, or to `VOICE-PROFILE.md` at the repo root directly (produced by `rl-voice-discovery`) if that's what exists instead — check for the file before concluding there's no voice reference at all.
 - **rl-writing-craft** — structure, grounding (Grounding Rules), line edit, anti-AI audit, copyedit. Always present — this is the one dependency that isn't optional.
+- **rl-review-panel** — the blind multi-lens panel pass in step 6. Bundled with this suite.
 - **an optional closing polish skill, if you have one** (e.g. ann-handley-voice) — a final voice/readability pass on top of rl-writing-craft's floor. Not required — skip this if you don't have one.
 
 This skill assumes a lane architecture — a router/generator skill, a craft
@@ -194,7 +195,7 @@ pass only on explicit signal.
 
 ### 6. Review the draft against the brief
 
-Three distinct passes, not one vague "review." A single self-review from the
+Four distinct passes, not one vague "review." A single self-review from the
 same context that just drafted the piece is the weakest possible judge of it —
 it's blind to exactly the generic phrasing and shape problems it just wrote.
 
@@ -228,7 +229,16 @@ If no search/fetch capability is available in the session, say so and flag
 every checkable claim for the writer's own verification instead of skipping
 the pass silently.
 
-Only named, specific objections from any of the three passes become revision
+**Panel pass (blind lenses).** Invoke `rl-review-panel` on the draft. Its
+lenses — structure and stakes, claims, the reader's access, honest persuasion,
+and story for narrative pieces — each read the draft cold in their own context
+and return diagnoses tied to a location; its Keeper merges them. The panel
+reviews content only: if this pipeline is producing a strategy document, a
+brand foundation, or a plan, skip this pass. Line-level cutting and rhythm are
+not the panel's job — they run at step 8, after revision has settled the
+sentences.
+
+Only named, specific objections from any of the four passes become revision
 targets.
 
 **Re-check (after step 7).** After step 7's revision, re-run the adversarial
@@ -237,17 +247,23 @@ rather than trusting that it did — a revision can fix the flagged issue while
 introducing a new one, and the only way to know is to check again with the
 same blind rigor. Re-verify the fact-check pass too, but only for claims the
 revision actually touched or added — re-running it against unchanged claims is
-wasted work.
+wasted work. Re-run only the panel lenses that raised a P0 or P1, against the
+revised passages.
 
 Reserve the full multi-agent adversarial-verification pattern (several
-independent skeptics voting) for higher-stakes review work — one blind pass is
-proportionate here; a swarm is overhead a single piece doesn't need.
+independent skeptics voting) for higher-stakes review work — one blind
+adversarial pass is proportionate here; a swarm is overhead a single piece
+doesn't need. The panel's parallel lenses are not that pattern: each asks a
+different question, so none of them is redundant.
 
 ### 7. Revise
 
 Address only what step 6 flagged. Don't re-litigate decisions the critique
-didn't raise a problem with — targeted revision, not a rewrite. After
-revising, return to step 6's adversarial pass once (see Re-check).
+didn't raise a problem with — targeted revision, not a rewrite. Panel
+findings are directions, not replacement text: write each fix in the author's
+voice (your author-voice skill, or `VOICE-PROFILE.md`), and put any panel
+question the writer must answer to them rather than guessing. After revising,
+return to step 6's adversarial pass once (see Re-check).
 
 ### 8. Run the writing suite
 
@@ -270,6 +286,10 @@ non-generic detail from step 2, or did a revision pass quietly sand it back
 down to something that could describe any company? Flag any section that
 reads generic and fix it before moving on — this is the same check the suite
 audit runs, done once more at the whole-piece level.
+
+If the panel ran at step 6, finish with its Keeper's voice check on every
+passage revision or the suite changed: steps 7 and 8 both rewrite sentences,
+and either can sand a voice down to competent neutral prose.
 
 ### 10. Approve
 

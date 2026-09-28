@@ -6,6 +6,53 @@ This project follows [Semantic Versioning](https://semver.org/). The `version`
 field in `.claude-plugin/plugin.json` pins installs — it is bumped on every
 release, or users keep their cached copy.
 
+## 0.22.0 — 2026-09-28
+
+### Added
+
+- **`rl-review-panel`**, a blind review panel for finished content drafts, and its
+  `/panel` dispatcher. Four lenses — Architect, Checker, Stranger, Conscience — plus a
+  Storyteller for narrative pieces each read the draft in their own fresh context and
+  return diagnoses, never rewrites. A non-voting Keeper states what the piece is
+  before they read and merges their findings after. A finding counts only if it cites
+  an `rl-writing-craft` rule or reports an observable effect on a reader; style
+  prescriptions without either are dropped. Content only: strategy documents, brand
+  foundations, voice profiles, briefs, and plans are out of scope. Line-level lenses
+  (cutting, rhythm, specificity) are deliberately not seated — `rl-writing-craft`'s
+  `edit` pass already runs them at step 8, after revision has settled the sentences.
+- **New `rl-writing-craft` rules**, in the house test-and-fix format. The panel cites the
+  first, second and fourth groups; the third belongs to the `edit` pass:
+  - `edit.md` → **Reader Access**: unintroduced reference, undefined insider term
+    (including one concept under several names), skipped step, condescension.
+  - `edit.md` → **Persuasion Integrity**: manufactured urgency and disproportionate
+    fear (HARD STOP); bait framing, unverifiable social proof, insecurity lever
+    (STRONG FLAG).
+  - `edit.md` → **End on the new information** (stress position) and **Buried action**
+    (nominalization).
+  - `structure.md` → **Stakes**, **Titles**, and a conditional **Narrative Pieces**
+    section.
+  - `audit.md` severity tiers list the new rules.
+
+### Changed
+
+- `rl-content-pipeline` step 6 runs a fourth pass, the panel pass. The re-check after
+  step 7 re-runs only the lenses that raised a P0 or P1; panel findings are written into
+  the fix in the author's voice, not pasted. Step 9 ends with the Keeper's voice check on
+  everything revision and the suite changed, since both rewrite sentences.
+- `edit.md` → AI connective tissue now states its boundary with Skipped step: cut a
+  connective that announces a link the text already makes; supply one that's missing.
+
+### Fixed
+
+- `edit.md` → Grounding Rules said "Eight rules… the first five are HARD STOPS." It
+  lists nine, six of them HARD STOPs.
+
+### Downstream
+
+- The assembled `rl-writing-craft` grows by about 1,300 words (7,365 → 8,669). Size
+  is a guideline, not a hard limit: a consumer re-vendoring it should weigh the added
+  length against what the rules buy, not refuse them on size alone. See `VENDORING.md`.
+
 ## 0.21.2 — 2026-08-20
 
 ### Fixed

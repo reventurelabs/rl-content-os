@@ -18,6 +18,7 @@ on this pass too.
 - Any grounding-rule violation that survived edit: population quantifiers, invented interiority,
   manufactured experience, manufactured vulnerability, unearned capability claims, causal-superlative
   overclaims
+- Persuasion Integrity hard stops: manufactured urgency, disproportionate fear
 
 **P1 — fix before publishing:**
 - Grounding-rule strong flags that survived edit: unmeasured quantitative flourish, smuggled
@@ -32,6 +33,8 @@ on this pass too.
 - Announcing the metaphor
 - Generic conclusions; summary closes
 - Synonym cycling
+- Persuasion Integrity strong flags: bait framing, unverifiable social proof, insecurity lever
+- Reader Access strong flags: unintroduced reference, undefined insider term, skipped step
 
 **P2 — fix when time allows:**
 - Copula avoidance ("serves as," "boasts")
@@ -40,6 +43,8 @@ on this pass too.
   examples, triple clauses — where one or two would do)
 - Generic business language clusters
 - Locally uniform sections (section-by-section scan)
+- Condescension; buried action (nominalization); the point buried mid-sentence instead of in
+  the stress position
 
 ### The Two-Pass Method
 
