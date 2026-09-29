@@ -119,6 +119,21 @@ Cover, at minimum:
   a question? context-setting?) and end (summary? forward-pointer? a
   specific callback?).
 
+**Measure what can be counted.** Sentence length and spread, contraction rate, hedging,
+punctuation habits, and function-word use are counts, not judgments — and a model reading for
+them estimates, while a script counts. Run `voice_metrics.py` (next to this file) on the samples:
+
+```bash
+python3 voice_metrics.py --block samples/*.md
+```
+
+Its output goes into the profile's Measured Baseline section verbatim. Use the numbers to ground
+the prose sections too — "short declaratives" is a vibe; "15% of sentences at 8 words or fewer,
+spread of 13.5" is checkable. The review panel's Keeper compares revised drafts against this
+baseline to catch a revision that sands the voice down. With no samples (interview-only), there's
+nothing to count: leave the section out and say so in **Source**. If Python isn't available, say
+so rather than filling the section with estimates.
+
 ## Step 3: Draft the profile
 
 Write `VOICE-PROFILE.md` with these sections — the template below is the
@@ -154,6 +169,12 @@ where possible.]
 by editing — the equivalent of `rl-writing-craft`'s audit function and
 Grounding Rules, but specific to this person: what would make a draft stop
 sounding like them.]
+
+## Measured Baseline
+[Pasted verbatim from `voice_metrics.py --block` on the samples — a table
+plus a machine-readable block. Never estimated, never hand-edited;
+regenerate it when the samples change. Omitted for interview-only
+profiles.]
 
 ## Corrections
 [Empty at first write. This section accumulates over time — see "Capturing

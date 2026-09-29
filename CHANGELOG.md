@@ -6,6 +6,40 @@ This project follows [Semantic Versioning](https://semver.org/). The `version`
 field in `.claude-plugin/plugin.json` pins installs — it is bumped on every
 release, or users keep their cached copy.
 
+## 0.23.0 — 2026-09-28
+
+Design changes to `rl-review-panel` from the evidence in
+`docs/research/2026-09-28-llm-review-panel-evidence.md`, after the panel's first live test
+returned 9 P0s out of 22 findings.
+
+### Added
+
+- **Verifier.** A fresh agent re-reads the draft at every P0 and P1 finding's quoted location and
+  confirms, downgrades, or rejects it before the Keeper consolidates. LLM critics produce false
+  alarms, and filtering them before the writer sees them is the mitigation with evidence behind it.
+- **`voice_metrics.py`** in `rl-voice-discovery`: deterministic counts of sentence length and
+  spread, contractions, hedges, intensifiers, first and second person, punctuation habits,
+  vocabulary variety, reading grade, and a function-word profile. `--block` writes a Measured
+  Baseline into `VOICE-PROFILE.md`; `--baseline … before after` marks every metric a revision moved
+  away from the writer's baseline. Standard library only.
+- `VOICE-PROFILE.md` gains a **Measured Baseline** section, filled by the script from the samples,
+  never estimated.
+
+### Changed
+
+- **Anchored severity.** P0/P1/P2 now have definitions and worked examples. P0 requires a HARD STOP
+  rule or a false belief the reader would take away, stated in the finding; Logical Consistency
+  errors are P1 unless they mislead; ties go to the lower level.
+- **Agreement weighting.** Agreement between lenses counts toward rank only across different model
+  families; same-model agreement is noted, not ranked up, because models share blind spots.
+- **Model family.** Run the lenses, verifier, and Keeper on a different family from the drafter
+  where the platform allows; label a same-family review as such (all Claude Code sub-agents are
+  Claude).
+- **Voice check** is measured (the script) and read, since an LLM reading for voice shares the bias
+  toward smooth, generic text.
+- **Revision limits.** The writer accepts or rejects each panel-driven change, and the loop is one
+  revision plus one re-check, then stop — in both `rl-review-panel` and `rl-content-pipeline` step 7.
+
 ## 0.22.0 — 2026-09-28
 
 ### Added

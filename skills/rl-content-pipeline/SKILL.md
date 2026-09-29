@@ -232,7 +232,8 @@ the pass silently.
 **Panel pass (blind lenses).** Invoke `rl-review-panel` on the draft. Its
 lenses — structure and stakes, claims, the reader's access, honest persuasion,
 and story for narrative pieces — each read the draft cold in their own context
-and return diagnoses tied to a location; its Keeper merges them. The panel
+and return diagnoses tied to a location; a verifier confirms, downgrades, or
+rejects every P0 and P1 before the Keeper merges them. The panel
 reviews content only: if this pipeline is producing a strategy document, a
 brand foundation, or a plan, skip this pass. Line-level cutting and rhythm are
 not the panel's job — they run at step 8, after revision has settled the
@@ -262,8 +263,15 @@ Address only what step 6 flagged. Don't re-litigate decisions the critique
 didn't raise a problem with — targeted revision, not a rewrite. Panel
 findings are directions, not replacement text: write each fix in the author's
 voice (your author-voice skill, or `VOICE-PROFILE.md`), and put any panel
-question the writer must answer to them rather than guessing. After revising,
-return to step 6's adversarial pass once (see Re-check).
+question the writer must answer to them rather than guessing. Show the
+panel-driven changes as a list, each tied to its finding, and let the writer
+accept or reject each one — don't fold them silently into a new draft. After
+revising, return to step 6's adversarial pass once (see Re-check).
+
+One revision and one re-check, then stop. Critique-and-revise gains come in
+the first round or two; more rounds drift toward generic prose. Anything still
+open after the re-check goes to the writer as a decision, not into another
+loop.
 
 ### 8. Run the writing suite
 
